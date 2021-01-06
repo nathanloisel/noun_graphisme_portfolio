@@ -36,17 +36,39 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Contentful starter",
+    title: "Noun Graphisme Portfolio",
   },
-  pathPrefix: "/gatsby-contentful-starter",
+  pathPrefix: "/",
   plugins: [
     "gatsby-transformer-remark",
     "gatsby-transformer-sharp",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
     "gatsby-plugin-sharp",
     {
       resolve: "gatsby-source-contentful",
       options: contentfulConfig,
+    },
+    {
+      resolve: "gatsby-plugin-typescript",
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: "jsx", // defaults to "React"
+        allExtensions: true, // defaults to false
+      },
+    },
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name: `Noun Graphisme Portfolio`,
+        short_name: `Noun Graphisme`,
+        start_url: `/`,
+        background_color: `#0b184e`,
+        description: `Noun Graphisme Portfolio: Tous à propos de mes réalisations graphiques.`,
+        theme_color: `#0b184e`,
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
     },
   ],
 };

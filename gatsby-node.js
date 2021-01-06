@@ -5,12 +5,12 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve('./src/templates/blog-post.js')
+    const projet = path.resolve('./src/templates/project.tsx')
     resolve(
       graphql(
         `
           {
-            allContentfulBlogPost {
+            allContentfulProjet {
               edges {
                 node {
                   title
@@ -26,13 +26,14 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        const posts = result.data.allContentfulBlogPost.edges
+        const posts = result.data.allContentfulProjet.edges
         posts.forEach(post => {
+          const slug = post.node.slug;
           createPage({
-            path: `/blog/${post.node.slug}/`,
-            component: blogPost,
+            path: `/projets/${slug}`,
+            component: projet,
             context: {
-              slug: post.node.slug,
+              slug
             },
           })
         })
@@ -40,3 +41,16 @@ exports.createPages = ({ graphql, actions }) => {
     )
   })
 }
+
+
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+  if (stage.startsWith('develop')) {
+    actions.setWebpackConfig({
+      resolve: {
+        alias: {
+          'react-dom': '@hot-loader/react-dom',
+        },
+      },
+    });
+  }
+};

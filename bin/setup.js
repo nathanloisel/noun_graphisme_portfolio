@@ -14,10 +14,10 @@ console.log(`
   You can find all the needed information in your Contentful space under:
 
   ${chalk.yellow(
-    `app.contentful.com ${chalk.red("->")} Space Settings ${chalk.red(
-      "->"
-    )} API keys`
-  )}
+  `app.contentful.com ${chalk.red("->")} Space Settings ${chalk.red(
+    "->"
+  )} API keys`
+)}
 
   The ${chalk.green("Content Management API Token")}
     will be used to import and write data to your space.
@@ -102,7 +102,7 @@ inquirer
     return { spaceId, managementToken };
   })
   .then(({ spaceId, managementToken }) =>
-    spaceImport({ spaceId, managementToken, content: exportFile })
+    spaceImport({ spaceId, managementToken, content: exportFile, errorLogFile: "./contentful" })
   )
   .then((_, error) => {
     console.log(

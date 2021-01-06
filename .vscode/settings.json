@@ -1,0 +1,9 @@
+{
+  "eslint.format.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true
+}
