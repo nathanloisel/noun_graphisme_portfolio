@@ -12,7 +12,7 @@
         "id": "blogPost",
         "type": "ContentType",
         "createdAt": "2021-01-06T10:56:58.625Z",
-        "updatedAt": "2021-01-06T12:20:14.214Z",
+        "updatedAt": "2021-01-09T15:03:39.235Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -20,8 +20,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 55,
-        "publishedAt": "2021-01-06T12:20:14.214Z",
+        "publishedVersion": 69,
+        "publishedAt": "2021-01-09T15:03:39.235Z",
         "firstPublishedAt": "2021-01-06T10:57:03.806Z",
         "createdBy": {
           "sys": {
@@ -37,8 +37,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 28,
-        "version": 56,
+        "publishedCounter": 35,
+        "version": 70,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -178,6 +178,31 @@
           ],
           "disabled": false,
           "omitted": false
+        },
+        {
+          "id": "previewImage",
+          "name": "Preview Image",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+            {
+              "assetImageDimensions": {
+                "width": {
+                  "min": 280,
+                  "max": 280
+                },
+                "height": {
+                  "min": 260,
+                  "max": 260
+                }
+              },
+              "message": "L'image pour la preview doit être de taille 280x260 (largeur x hauteur)."
+            }
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
         }
       ]
     },
@@ -193,7 +218,7 @@
         "id": "person",
         "type": "ContentType",
         "createdAt": "2021-01-06T10:56:58.705Z",
-        "updatedAt": "2021-01-06T12:07:16.050Z",
+        "updatedAt": "2021-01-09T15:03:40.081Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -201,8 +226,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 45,
-        "publishedAt": "2021-01-06T12:07:16.050Z",
+        "publishedVersion": 63,
+        "publishedAt": "2021-01-09T15:03:40.081Z",
         "firstPublishedAt": "2021-01-06T10:57:02.754Z",
         "createdBy": {
           "sys": {
@@ -218,8 +243,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 23,
-        "version": 46,
+        "publishedCounter": 32,
+        "version": 64,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -243,6 +268,53 @@
               "nodes": {
               }
             }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "descriptionImage",
+          "name": "DescriptionImage",
+          "type": "Link",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "homeImage",
+          "name": "HomeImage",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "projetsImage",
+          "name": "projetsImage",
+          "type": "Link",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "linkType": "Asset"
+        },
+        {
+          "id": "projetsLabel",
+          "name": "projetsLabel",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
           ],
           "disabled": false,
           "omitted": false
@@ -276,33 +348,32 @@
           "localized": false,
           "required": false,
           "validations": [
+            {
+              "regexp": {
+                "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-/]))?$",
+                "flags": null
+              }
+            }
           ],
           "disabled": false,
           "omitted": false
         },
         {
-          "id": "descriptionImage",
-          "name": "DescriptionImage",
-          "type": "Link",
+          "id": "behance",
+          "name": "behance",
+          "type": "Symbol",
           "localized": false,
           "required": false,
           "validations": [
+            {
+              "regexp": {
+                "pattern": "^(ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-/]))?$",
+                "flags": null
+              }
+            }
           ],
           "disabled": false,
-          "omitted": false,
-          "linkType": "Asset"
-        },
-        {
-          "id": "homeImage",
-          "name": "HomeImage",
-          "type": "Link",
-          "localized": false,
-          "required": true,
-          "validations": [
-          ],
-          "disabled": false,
-          "omitted": false,
-          "linkType": "Asset"
+          "omitted": false
         },
         {
           "id": "address",
@@ -336,7 +407,7 @@
             "linkType": "Space"
           }
         },
-        "version": 56,
+        "version": 70,
         "createdAt": "2021-01-06T10:57:03.925Z",
         "createdBy": {
           "sys": {
@@ -345,7 +416,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-01-06T12:20:15.917Z",
+        "updatedAt": "2021-01-09T15:03:43.670Z",
         "updatedBy": {
           "sys": {
             "id": "4UNw5HJk24zc7XUuIUNqap",
@@ -417,6 +488,11 @@
           "fieldId": "slug",
           "widgetId": "singleLine",
           "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "previewImage",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
         }
       ]
     },
@@ -431,7 +507,7 @@
             "linkType": "Space"
           }
         },
-        "version": 46,
+        "version": 64,
         "createdAt": "2021-01-06T10:57:02.936Z",
         "createdBy": {
           "sys": {
@@ -440,7 +516,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2021-01-06T12:07:17.908Z",
+        "updatedAt": "2021-01-09T15:03:41.583Z",
         "updatedBy": {
           "sys": {
             "id": "4UNw5HJk24zc7XUuIUNqap",
@@ -470,6 +546,26 @@
           "widgetNamespace": "builtin"
         },
         {
+          "fieldId": "descriptionImage",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "homeImage",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "projetsImage",
+          "widgetId": "assetLinkEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "projetsLabel",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
           "fieldId": "email",
           "widgetId": "singleLine",
           "widgetNamespace": "builtin"
@@ -485,13 +581,8 @@
           "widgetNamespace": "builtin"
         },
         {
-          "fieldId": "descriptionImage",
-          "widgetId": "assetLinkEditor",
-          "widgetNamespace": "builtin"
-        },
-        {
-          "fieldId": "homeImage",
-          "widgetId": "assetLinkEditor",
+          "fieldId": "behance",
+          "widgetId": "singleLine",
           "widgetNamespace": "builtin"
         },
         {
@@ -515,7 +606,7 @@
         "id": "2nH2prijQalfGjAOnIQfbt",
         "type": "Entry",
         "createdAt": "2021-01-06T11:17:15.908Z",
-        "updatedAt": "2021-01-06T12:07:34.290Z",
+        "updatedAt": "2021-01-09T15:04:06.668Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -523,8 +614,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 34,
-        "publishedAt": "2021-01-06T12:07:34.290Z",
+        "publishedVersion": 53,
+        "publishedAt": "2021-01-09T15:04:06.668Z",
         "firstPublishedAt": "2021-01-06T11:25:06.442Z",
         "createdBy": {
           "sys": {
@@ -540,8 +631,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 12,
-        "version": 35,
+        "publishedCounter": 20,
+        "version": 54,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -559,7 +650,7 @@
       },
       "fields": {
         "bio": {
-          "en-US": {
+          "fr-FR": {
             "data": {
             },
             "content": [
@@ -582,17 +673,8 @@
             "nodeType": "document"
           }
         },
-        "email": {
-          "en-US": "noun.graphisme@gmail.com"
-        },
-        "phone": {
-          "en-US": "+33 6.47.78.77.00"
-        },
-        "facebook": {
-          "en-US": "https://www.facebook.com/Nounfreelance/"
-        },
         "descriptionImage": {
-          "en-US": {
+          "fr-FR": {
             "sys": {
               "type": "Link",
               "linkType": "Asset",
@@ -601,7 +683,7 @@
           }
         },
         "homeImage": {
-          "en-US": {
+          "fr-FR": {
             "sys": {
               "type": "Link",
               "linkType": "Asset",
@@ -609,43 +691,67 @@
             }
           }
         },
+        "projetsImage": {
+          "fr-FR": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "5k2DgF7gaFPiePJLs7nx3i"
+            }
+          }
+        },
+        "projetsLabel": {
+          "fr-FR": "Mes créations"
+        },
+        "email": {
+          "fr-FR": "noun.graphisme@gmail.com"
+        },
+        "phone": {
+          "fr-FR": "+33 6.47.78.77.00"
+        },
+        "facebook": {
+          "fr-FR": "https://www.facebook.com/Nounfreelance/"
+        },
+        "behance": {
+          "fr-FR": "https://www.behance.net/"
+        },
         "address": {
-          "en-US": {
-            "nodeType": "document",
+          "fr-FR": {
             "data": {
             },
             "content": [
               {
-                "nodeType": "paragraph",
+                "data": {
+                },
                 "content": [
                   {
-                    "nodeType": "text",
-                    "value": "339 route du crochede",
+                    "data": {
+                    },
                     "marks": [
                     ],
-                    "data": {
-                    }
+                    "value": "339 route du crochede",
+                    "nodeType": "text"
                   }
                 ],
-                "data": {
-                }
+                "nodeType": "paragraph"
               },
               {
-                "nodeType": "paragraph",
+                "data": {
+                },
                 "content": [
                   {
-                    "nodeType": "text",
-                    "value": "74500 - Bernex",
+                    "data": {
+                    },
                     "marks": [
                     ],
-                    "data": {
-                    }
+                    "value": "74500 - Bernex",
+                    "nodeType": "text"
                   }
                 ],
-                "data": {
-                }
+                "nodeType": "paragraph"
               }
-            ]
+            ],
+            "nodeType": "document"
           }
         }
       }
@@ -662,7 +768,7 @@
         "id": "3RnZeLjsh2ZMQI3WxNkW4y",
         "type": "Entry",
         "createdAt": "2021-01-06T12:00:15.424Z",
-        "updatedAt": "2021-01-06T12:19:02.166Z",
+        "updatedAt": "2021-01-09T15:04:53.002Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -670,8 +776,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 15,
-        "publishedAt": "2021-01-06T12:19:02.166Z",
+        "publishedVersion": 25,
+        "publishedAt": "2021-01-09T11:05:18.835Z",
         "firstPublishedAt": "2021-01-06T12:01:12.940Z",
         "createdBy": {
           "sys": {
@@ -687,8 +793,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 3,
-        "version": 16,
+        "publishedCounter": 8,
+        "version": 29,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -706,16 +812,16 @@
       },
       "fields": {
         "title": {
-          "en-US": "Place pour écrire le titre du projet"
+          "fr-FR": "Place pour écrire le titre du projet"
         },
         "category": {
-          "en-US": "logo"
+          "fr-FR": "logo"
         },
         "sousTitre": {
-          "en-US": "ABOUT THE PROJECT"
+          "fr-FR": "ABOUT THE PROJECT"
         },
         "description": {
-          "en-US": {
+          "fr-FR": {
             "data": {
             },
             "content": [
@@ -739,13 +845,13 @@
           }
         },
         "publishDate": {
-          "en-US": "2021-01-06T12:00+01:00"
+          "fr-FR": "2021-01-06T12:00+01:00"
         },
         "client": {
-          "en-US": "Roberty Lapizza"
+          "fr-FR": "Roberty Lapizza"
         },
         "heroImage": {
-          "en-US": {
+          "fr-FR": {
             "sys": {
               "type": "Link",
               "linkType": "Asset",
@@ -754,7 +860,7 @@
           }
         },
         "images": {
-          "en-US": [
+          "fr-FR": [
             {
               "sys": {
                 "type": "Link",
@@ -779,7 +885,16 @@
           ]
         },
         "slug": {
-          "en-US": "place-pour-ecrire-le-titre-du-projet"
+          "fr-FR": "place-pour-ecrire-le-titre-du-projet"
+        },
+        "previewImage": {
+          "fr-FR": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "6vcFQ46Plf5Px34Wk3BHiP"
+            }
+          }
         }
       }
     }
@@ -797,7 +912,7 @@
         "id": "6Od9v3wzLOysiMum0Wkmme",
         "type": "Asset",
         "createdAt": "2021-01-06T10:57:07.178Z",
-        "updatedAt": "2021-01-06T12:07:25.563Z",
+        "updatedAt": "2021-01-09T15:03:55.147Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -805,8 +920,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 38,
-        "publishedAt": "2021-01-06T12:07:25.563Z",
+        "publishedVersion": 56,
+        "publishedAt": "2021-01-09T15:03:55.147Z",
         "firstPublishedAt": "2021-01-06T10:57:19.041Z",
         "createdBy": {
           "sys": {
@@ -822,8 +937,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 13,
-        "version": 39,
+        "publishedCounter": 19,
+        "version": 57,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -834,14 +949,14 @@
       },
       "fields": {
         "title": {
-          "en-US": "Woman with black hat"
+          "fr-FR": "Woman with black hat"
         },
         "description": {
-          "en-US": "Woman wearing a black hat"
+          "fr-FR": "Woman wearing a black hat"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/6Od9v3wzLOysiMum0Wkmme/f4a3d169862a837d71986e92a1e1ff3f/cameron-kirby-88711.jpg",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/6Od9v3wzLOysiMum0Wkmme/e44826b04456211e3cd03d8dc5bac0f5/cameron-kirby-88711.jpg",
             "details": {
               "size": 7316629,
               "image": {
@@ -867,7 +982,7 @@
         "id": "7orLdboQQowIUs22KAW4U",
         "type": "Asset",
         "createdAt": "2021-01-06T10:57:07.192Z",
-        "updatedAt": "2021-01-06T12:07:30.131Z",
+        "updatedAt": "2021-01-09T15:04:02.461Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -875,8 +990,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 38,
-        "publishedAt": "2021-01-06T12:07:30.131Z",
+        "publishedVersion": 56,
+        "publishedAt": "2021-01-09T15:04:02.461Z",
         "firstPublishedAt": "2021-01-06T10:57:16.721Z",
         "createdBy": {
           "sys": {
@@ -892,8 +1007,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 13,
-        "version": 39,
+        "publishedCounter": 19,
+        "version": 57,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -904,14 +1019,14 @@
       },
       "fields": {
         "title": {
-          "en-US": "Sparkler"
+          "fr-FR": "Sparkler"
         },
         "description": {
-          "en-US": "John with Sparkler"
+          "fr-FR": "John with Sparkler"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/7orLdboQQowIUs22KAW4U/bdf5dbda5606d7e5c66cad6a16c3097b/matt-palmer-254999.jpg",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/7orLdboQQowIUs22KAW4U/a2ddae5d968f5304ba5ff411a4349bfe/matt-palmer-254999.jpg",
             "details": {
               "size": 2293094,
               "image": {
@@ -937,7 +1052,7 @@
         "id": "4shwYI3POEGkw0Eg6kcyaQ",
         "type": "Asset",
         "createdAt": "2021-01-06T10:57:07.565Z",
-        "updatedAt": "2021-01-06T12:07:29.596Z",
+        "updatedAt": "2021-01-09T15:04:01.397Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -945,8 +1060,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 38,
-        "publishedAt": "2021-01-06T12:07:29.596Z",
+        "publishedVersion": 56,
+        "publishedAt": "2021-01-09T15:04:01.397Z",
         "firstPublishedAt": "2021-01-06T10:57:17.590Z",
         "createdBy": {
           "sys": {
@@ -962,8 +1077,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 13,
-        "version": 39,
+        "publishedCounter": 19,
+        "version": 57,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -974,14 +1089,14 @@
       },
       "fields": {
         "title": {
-          "en-US": "Man in the fields"
+          "fr-FR": "Man in the fields"
         },
         "description": {
-          "en-US": "Tattooed man walking in a field"
+          "fr-FR": "Tattooed man walking in a field"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/4shwYI3POEGkw0Eg6kcyaQ/ce1d44b7e69a3fc3dd20b090efc078e2/felix-russell-saw-112140.jpg",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/4shwYI3POEGkw0Eg6kcyaQ/62c853f7f62eeea3dcdb6dba3de199f4/felix-russell-saw-112140.jpg",
             "details": {
               "size": 4539181,
               "image": {
@@ -1007,7 +1122,7 @@
         "id": "4NzwDSDlGECGIiokKomsyI",
         "type": "Asset",
         "createdAt": "2021-01-06T10:57:07.570Z",
-        "updatedAt": "2021-01-06T12:07:29.031Z",
+        "updatedAt": "2021-01-09T15:04:01.039Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1015,8 +1130,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 38,
-        "publishedAt": "2021-01-06T12:07:29.031Z",
+        "publishedVersion": 56,
+        "publishedAt": "2021-01-09T15:04:01.039Z",
         "firstPublishedAt": "2021-01-06T10:57:18.179Z",
         "createdBy": {
           "sys": {
@@ -1032,8 +1147,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 13,
-        "version": 39,
+        "publishedCounter": 19,
+        "version": 57,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1044,14 +1159,14 @@
       },
       "fields": {
         "title": {
-          "en-US": "City"
+          "fr-FR": "City"
         },
         "description": {
-          "en-US": "City pictured from the sky"
+          "fr-FR": "City pictured from the sky"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/4NzwDSDlGECGIiokKomsyI/59b581d05513ead17357112e201544a0/denys-nevozhai-100695.jpg",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/4NzwDSDlGECGIiokKomsyI/d75af5bd55e5f847f663034341958597/denys-nevozhai-100695.jpg",
             "details": {
               "size": 15736986,
               "image": {
@@ -1077,7 +1192,7 @@
         "id": "Z323XkiijRb1C8lkOTsxH",
         "type": "Asset",
         "createdAt": "2021-01-06T11:20:00.944Z",
-        "updatedAt": "2021-01-06T12:07:28.176Z",
+        "updatedAt": "2021-01-09T15:04:00.397Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1085,8 +1200,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 41,
-        "publishedAt": "2021-01-06T12:07:28.176Z",
+        "publishedVersion": 59,
+        "publishedAt": "2021-01-09T15:04:00.397Z",
         "firstPublishedAt": "2021-01-06T11:20:41.955Z",
         "createdBy": {
           "sys": {
@@ -1102,8 +1217,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 13,
-        "version": 42,
+        "publishedCounter": 19,
+        "version": 60,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1114,11 +1229,11 @@
       },
       "fields": {
         "title": {
-          "en-US": "Header Image"
+          "fr-FR": "Header Image"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/Z323XkiijRb1C8lkOTsxH/0714538340fd07dbf3777ecc5991accb/Header.png",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/Z323XkiijRb1C8lkOTsxH/07fcf66fbd72c265370ef2f8443d3693/Header.png",
             "details": {
               "size": 661720,
               "image": {
@@ -1144,7 +1259,7 @@
         "id": "4lNhumIKHk33NkbM8Sd6QE",
         "type": "Asset",
         "createdAt": "2021-01-06T11:20:48.891Z",
-        "updatedAt": "2021-01-06T12:07:27.643Z",
+        "updatedAt": "2021-01-09T15:03:57.160Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1152,8 +1267,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 37,
-        "publishedAt": "2021-01-06T12:07:27.643Z",
+        "publishedVersion": 55,
+        "publishedAt": "2021-01-09T15:03:57.160Z",
         "firstPublishedAt": "2021-01-06T11:21:12.129Z",
         "createdBy": {
           "sys": {
@@ -1169,8 +1284,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 12,
-        "version": 38,
+        "publishedCounter": 18,
+        "version": 56,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1181,11 +1296,11 @@
       },
       "fields": {
         "title": {
-          "en-US": "description image"
+          "fr-FR": "description image"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/4lNhumIKHk33NkbM8Sd6QE/9982980b075b76f59d65230438793162/DescImage.png",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/4lNhumIKHk33NkbM8Sd6QE/62ada29adced241472818e414a23aeb3/DescImage.png",
             "details": {
               "size": 7124,
               "image": {
@@ -1211,7 +1326,7 @@
         "id": "1Gz0BzMUYE327V3DbvyZ1o",
         "type": "Asset",
         "createdAt": "2021-01-06T11:25:58.053Z",
-        "updatedAt": "2021-01-06T12:07:26.651Z",
+        "updatedAt": "2021-01-09T15:03:56.689Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1219,8 +1334,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 37,
-        "publishedAt": "2021-01-06T12:07:26.651Z",
+        "publishedVersion": 55,
+        "publishedAt": "2021-01-09T15:03:56.689Z",
         "firstPublishedAt": "2021-01-06T11:26:10.786Z",
         "createdBy": {
           "sys": {
@@ -1236,8 +1351,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 12,
-        "version": 38,
+        "publishedCounter": 18,
+        "version": 56,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1248,11 +1363,11 @@
       },
       "fields": {
         "title": {
-          "en-US": "HeroImage"
+          "fr-FR": "HeroImage"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/1Gz0BzMUYE327V3DbvyZ1o/35761f8e0928c52cbed44d46eb640d38/IMG.png",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/1Gz0BzMUYE327V3DbvyZ1o/579b1857805cc19a9fa7779e5f87c2f5/IMG.png",
             "details": {
               "size": 2286,
               "image": {
@@ -1278,7 +1393,7 @@
         "id": "6oHcNGiazKdUPbYJLL9DHY",
         "type": "Asset",
         "createdAt": "2021-01-06T11:26:15.347Z",
-        "updatedAt": "2021-01-06T12:07:26.091Z",
+        "updatedAt": "2021-01-09T15:03:56.306Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -1286,8 +1401,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 37,
-        "publishedAt": "2021-01-06T12:07:26.091Z",
+        "publishedVersion": 55,
+        "publishedAt": "2021-01-09T15:03:56.306Z",
         "firstPublishedAt": "2021-01-06T11:26:30.385Z",
         "createdBy": {
           "sys": {
@@ -1303,8 +1418,8 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "publishedCounter": 12,
-        "version": 38,
+        "publishedCounter": 18,
+        "version": 56,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -1315,11 +1430,11 @@
       },
       "fields": {
         "title": {
-          "en-US": "porjetasset"
+          "fr-FR": "porjetasset"
         },
         "file": {
-          "en-US": {
-            "url": "//images.ctfassets.net/n086ro9j9v72/6oHcNGiazKdUPbYJLL9DHY/ebd0b9b7ba354b187b67badb961739d3/Rectangle_1.png",
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/6oHcNGiazKdUPbYJLL9DHY/9f762410b312aad833dd479f1b151030/Rectangle_1.png",
             "details": {
               "size": 689,
               "image": {
@@ -1332,12 +1447,146 @@
           }
         }
       }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "n086ro9j9v72"
+          }
+        },
+        "id": "5k2DgF7gaFPiePJLs7nx3i",
+        "type": "Asset",
+        "createdAt": "2021-01-09T10:59:00.070Z",
+        "updatedAt": "2021-01-09T15:03:55.910Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 13,
+        "publishedAt": "2021-01-09T15:03:55.910Z",
+        "firstPublishedAt": "2021-01-09T10:59:39.564Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4UNw5HJk24zc7XUuIUNqap"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4UNw5HJk24zc7XUuIUNqap"
+          }
+        },
+        "publishedCounter": 4,
+        "version": 14,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4UNw5HJk24zc7XUuIUNqap"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "fr-FR": "projets image"
+        },
+        "file": {
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/5k2DgF7gaFPiePJLs7nx3i/14705eafdff14047b8715a3bf8e98ee8/projet_header.png",
+            "details": {
+              "size": 1388652,
+              "image": {
+                "width": 1282,
+                "height": 409
+              }
+            },
+            "fileName": "projet_header.png",
+            "contentType": "image/png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "n086ro9j9v72"
+          }
+        },
+        "id": "6vcFQ46Plf5Px34Wk3BHiP",
+        "type": "Asset",
+        "createdAt": "2021-01-09T15:04:44.742Z",
+        "updatedAt": "2021-01-09T15:09:44.048Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 4,
+        "publishedAt": "2021-01-09T15:09:44.048Z",
+        "firstPublishedAt": "2021-01-09T15:09:44.048Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4UNw5HJk24zc7XUuIUNqap"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4UNw5HJk24zc7XUuIUNqap"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 5,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "4UNw5HJk24zc7XUuIUNqap"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "fr-FR": "Projet preview"
+        },
+        "file": {
+          "fr-FR": {
+            "url": "//images.ctfassets.net/n086ro9j9v72/6vcFQ46Plf5Px34Wk3BHiP/8e729d62defbefb4de1b7ce091705942/Rectangle_16.png",
+            "details": {
+              "size": 915,
+              "image": {
+                "width": 280,
+                "height": 260
+              }
+            },
+            "fileName": "Rectangle 16.png",
+            "contentType": "image/png"
+          }
+        }
+      }
     }
   ],
   "locales": [
     {
-      "name": "U.S. English",
-      "code": "en-US",
+      "name": "French (France)",
+      "code": "fr-FR",
       "fallbackCode": null,
       "default": true,
       "contentManagementApi": true,
@@ -1346,7 +1595,7 @@
       "sys": {
         "type": "Locale",
         "id": "5fcadohgEW7qSHCmr6I5xi",
-        "version": 2,
+        "version": 3,
         "space": {
           "sys": {
             "type": "Link",
@@ -1377,52 +1626,7 @@
             "id": "4UNw5HJk24zc7XUuIUNqap"
           }
         },
-        "updatedAt": "2021-01-06T10:56:57Z"
-      }
-    },
-    {
-      "name": "French (France)",
-      "code": "fr-FR",
-      "fallbackCode": "en-US",
-      "default": false,
-      "contentManagementApi": true,
-      "contentDeliveryApi": true,
-      "optional": false,
-      "sys": {
-        "type": "Locale",
-        "id": "4KOpE5iR2e9MWBcUq8js4M",
-        "version": 2,
-        "space": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Space",
-            "id": "n086ro9j9v72"
-          }
-        },
-        "environment": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Environment",
-            "id": "master",
-            "uuid": "0aef6ecf-2f0a-4527-ab07-e834964c2d72"
-          }
-        },
-        "createdBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "4UNw5HJk24zc7XUuIUNqap"
-          }
-        },
-        "createdAt": "2021-01-06T11:38:24Z",
-        "updatedBy": {
-          "sys": {
-            "type": "Link",
-            "linkType": "User",
-            "id": "4UNw5HJk24zc7XUuIUNqap"
-          }
-        },
-        "updatedAt": "2021-01-06T11:39:15Z"
+        "updatedAt": "2021-01-06T18:17:04Z"
       }
     }
   ],

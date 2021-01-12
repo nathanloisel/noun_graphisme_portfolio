@@ -5,11 +5,15 @@
   "version": "0.0.1",
   "author": "Nathan Loisel <nathan.loisel@outlook.com>",
   "dependencies": {
+    "fslightbox-react": "^1.6.2",
     "gatsby": "^2.30.1",
     "gatsby-image": "^2.9.0",
     "gatsby-plugin-manifest": "^2.10.0",
+    "gatsby-plugin-offline": "^3.8.0",
     "gatsby-plugin-react-helmet": "^3.8.0",
     "gatsby-plugin-sharp": "^2.12.0",
+    "gatsby-plugin-sitemap": "^2.10.0",
+    "gatsby-plugin-slug-field": "^0.2.0",
     "gatsby-plugin-styled-components": "^3.8.0",
     "gatsby-plugin-typescript": "^2.10.0",
     "gatsby-source-contentful": "^4.4.0",
@@ -22,11 +26,13 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
     "@hot-loader/react-dom": "^17.0.1",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
     "@storybook/react": "^6.1.11",
+    "@types/fslightbox-react": "^1.4.0",
     "@types/node": "^14.14.20",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -35,6 +41,9 @@
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
     "@typescript-eslint/typescript-estree": "^4.12.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.12.0",
+    "babel-preset-react-app": "^10.0.0",
     "contentful-import": "^7.9.32",
     "cross-env": "^7.0.3",
     "eslint": "^7.17.0",
@@ -77,6 +86,7 @@
     "setup": "npm run contentful:update && node ./bin/setup.js",
     "contentful:update": "contentful space export --space-id n086ro9j9v72  --export-dir contentful  --content-file export.json",
     "netlify:login": "netlify login",
-    "netlify:deploy": "netlify deploy -d public -p"
+    "netlify:deploy": "netlify deploy -d public -p",
+    "storybook": "cross-env NODE_ENV=test start-storybook -p 6006 -s ./public"
   }
 }

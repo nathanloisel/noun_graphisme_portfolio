@@ -1,6 +1,10 @@
-import { createGlobalStyle, css, ThemeContext } from 'styled-components';
+import { createGlobalStyle, ThemeContext } from 'styled-components';
 import { useContext } from 'react';
 import { theme as StyledTheme } from './theme';
+//@ts-ignore
+import DINProBold from './fonts/DINPro-Bold.woff2';
+//@ts-ignore
+import DINProRegular from './fonts/DINPro-Regular.woff2';
 
 export default function useStyledTheme() {
   const theme: typeof StyledTheme = useContext<typeof StyledTheme>(ThemeContext);
@@ -9,16 +13,17 @@ export default function useStyledTheme() {
 
 export const GlobalStyle = createGlobalStyle`
 
-@font-face {
+  @font-face{
     font-family: "DIN Pro";
-    src: url("./fonts/DINPro-Bold.ttf");
+    src: local('DIN Pro'), url('${DINProBold}') format('woff2');
     font-weight: bold;
   }
-  @font-face {
+  @font-face{
     font-family: "DIN Pro";
-    src: url("./fonts/DINPro-Regular.ttf");
+    src: local('DIN Pro'), url('${DINProRegular}') format('woff2');
     font-weight: normal;
   }
+
 
   html {
     font-family: sans-serif;
@@ -229,7 +234,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
   body {
-    color: hsla(0, 0%, 0%, 0.8);
+    color: ${({ theme }) => theme.color.dark_grey.hex};
     font-family: "DIN Pro";
     font-weight: normal;
     word-wrap: break-word;
@@ -248,7 +253,6 @@ export const GlobalStyle = createGlobalStyle`
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    margin-bottom: 1.45rem;
   }
   h1 {
     margin-left: 0;

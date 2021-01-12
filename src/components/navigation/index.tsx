@@ -1,15 +1,15 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { Nav, HeaderLink } from './style';
 
-export default () => (
-  <nav role="navigation">
-    <ul>
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/blog/">Blog</Link>
-      </li>
-    </ul>
-  </nav>
-)
+export interface INavigationProps {
+  className?: string;
+}
+
+const Navigation: React.FC<INavigationProps> = ({ className }) => (
+  <Nav role="navigation" className={className}>
+    <HeaderLink to="/">Accueil</HeaderLink>
+    <HeaderLink to="/projets">Mes projets</HeaderLink>
+    <HeaderLink to="/contact">Contacts</HeaderLink>
+  </Nav>
+);
+export default Navigation;

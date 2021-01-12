@@ -8,19 +8,15 @@ const React = require('react');
 const { LocationProvider } = require('@reach/router');
 const { ThemeProvider } = require('styled-components');
 
-const { default: Layout } = require('./src/components/layout');
 const { GlobalStyle } = require('./src/global-style');
 const { theme } = require('./src/theme');
-
 
 exports.wrapPageElement = (apiCallbackContext) => {
   return (
     <LocationProvider>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <GlobalStyle />
-          {apiCallbackContext.element}
-        </Layout>
+        <GlobalStyle />
+        {apiCallbackContext.element}
       </ThemeProvider>
     </LocationProvider>
   );

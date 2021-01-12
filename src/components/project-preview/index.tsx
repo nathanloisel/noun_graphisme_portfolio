@@ -1,26 +1,27 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import React from 'react';
+import Img, { FluidObject } from 'gatsby-image';
+import { Plus, StyledLink, Title } from './style';
 
-interface IProjectPreviewProps {
-    slug: string;
+export interface IProjectPreviewProps {
+  slug: string;
+  title: string;
+  image: {
     title: string;
-    image: {
-      title: string;
-      fluid: FluidObject;
-    }
+    fluid: FluidObject;
+  };
+  className?: string;
 }
 
-const ProjectPreview: React.FC<IProjectPreviewProps> = ({ slug, title, image }) => {
+const ProjectPreview: React.FC<IProjectPreviewProps> = ({ slug, title, image, className }) => {
   return (
-    <div>
+    <StyledLink to={`/projets/${slug}`} className={className}>
       <Img alt={image.title} fluid={image.fluid} />
-      <h3 >
-        <Link to={`/projets/${slug}`}>{title}</Link>
-      </h3>
-    </div>
+      <div className="project-preview-inner">
+        <Plus>+</Plus>
+        <Title>{title}</Title>
+      </div>
+    </StyledLink>
   );
-}
-
+};
 
 export default ProjectPreview;

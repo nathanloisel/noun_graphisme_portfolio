@@ -1,14 +1,15 @@
 import React from 'react';
-import Navigation from '../navigation';
+import { StyledHeader, Wrapper } from './style';
 
 interface ILayoutProps {
-  location: Location;
+  behanceUrl?: string;
+  facebookUrl?: string;
 }
 
-const Layout: React.FC<ILayoutProps> = ({children}) => (
-  <div>
-    <Navigation />
+const Layout: React.FC<ILayoutProps> = ({children, facebookUrl, behanceUrl}) => (
+  <Wrapper>
+    <StyledHeader facebookUrl={facebookUrl} behanceUrl={behanceUrl}/>
     {children}
-  </div>
+  </Wrapper>
 );
 export default Layout;

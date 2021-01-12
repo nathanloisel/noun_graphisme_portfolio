@@ -2,84 +2,92 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { ContentfulRichTextGatsbyReference, RenderRichTextData } from 'gatsby-source-contentful/rich-text';
-import { FluidObject, GatsbyImageFluidProps } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 
 import Hero from '../components/hero';
 import Layout from '../components/layout';
-import ProjectPreview from '../components/project-preview';
+import HomeFilters from '../components/home-filters';
+import HomeDescription from '../components/home-description';
+import styled from 'styled-components';
+
+export type IRichText = RenderRichTextData<ContentfulRichTextGatsbyReference>;
+
+export enum ProjectFilters {
+  Logo = 'logo',
+  Identite = 'identite',
+  Edition = 'edition',
+  WebDesign = 'webdesign',
+  MotionDesign = 'motiondesign',
+}
 
 export interface ISiteMetaData {
   title: string;
 }
 
 export interface IProjectPreview {
-  contentful_id: string;
   title: string;
-  slug: string;
+  fields: {
+    slug: string;
+  };
   category: string;
-  sousTitre: string;
-  description: RenderRichTextData<ContentfulRichTextGatsbyReference>;
-  publishDate: string;
-  client?: string;
-  heroImage: {
+  previewImage: {
     title: string;
     fluid: FluidObject;
   };
-  images: Array<{
-    title: string;
-    fluid: FluidObject;
-  }>;
 }
 
 export interface IBioImageContact {
-  bio: string;
+  bio: IRichText;
   email: string;
-  telephone: string;
-  facebook: string;
+  phone: string;
+  facebook?: string;
+  behance?: string;
   homeImage: {
     title: string;
     fluid: FluidObject;
   };
-  descriptionImage: GatsbyImageFluidProps;
-  address: RenderRichTextData<ContentfulRichTextGatsbyReference>;
+  projetsLabel: string;
+  projetsImage: {
+    title: string;
+    fluid: FluidObject;
+  };
+  descriptionImage: {
+    title: string;
+    fluid: FluidObject;
+  };
+  address: IRichText;
 }
+
+const StyledHomeFilters = styled(HomeFilters)`
+  margin-top: 28px;
+`;
+
+const StyledHomeDescription = styled(HomeDescription)`
+  margin-top: 80px;
+`;
 
 interface IHomeProps {
   data: {
-    site: {siteMetadata: ISiteMetaData};
-    allContentfulProjet: {edges: Array<{node: IProjectPreview}>};
+    site: { siteMetadata: ISiteMetaData };
     allContentfulBioImageContact: {
-      edges: Array<{node: IBioImageContact }>;
+      edges: Array<{ node: IBioImageContact }>;
     };
-  }
+  };
   location: Location;
 }
 
-
-const Home: React.FC<IHomeProps> = ({data, location}) => {
-
+const Home: React.FC<IHomeProps> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
-  const projects = data.allContentfulProjet.edges;
   const [meta] = data.allContentfulBioImageContact.edges;
-  console.log(projects);
   return (
-      <div style={{ background: '#fff' }}>
+    <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
       <Helmet title={siteTitle} />
-      <Hero homeImage={meta.node.homeImage} bio={meta.node.bio} />
-      <div className="wrapper">
-        <h2 className="section-headline">Recent articles</h2>
-        <ul className="article-list">
-          {projects.map(({ node }) => (
-              <li key={node.contentful_id}>
-                <ProjectPreview slug={node.slug} title={node.title} image={node.heroImage} />
-              </li>
-          ))}
-        </ul>
-      </div>
-      </div>
+      <Hero homeImage={meta.node.homeImage} />
+      <StyledHomeFilters />
+      <StyledHomeDescription bio={meta.node.bio} descriptionImage={meta.node.descriptionImage} />
+    </Layout>
   );
-}
-
+};
 export default Home;
 
 export const pageQuery = graphql`
@@ -89,59 +97,23 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulProjet(filter: {node_locale: {eq: "fr-FR"}}, sort: { fields: [publishDate, title ], order: DESC }) {
+    allContentfulBioImageContact(filter: { contentful_id: { eq: "2nH2prijQalfGjAOnIQfbt" } }) {
       edges {
         node {
-          title
-          sousTitre
-          contentful_id
-          slug
-          publishDate(formatString: "MMMM Do, YYYY")
-          heroImage {
-            title
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          images {
-            title
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          description {
-            raw
-          }
-        }
-      }
-    }
-    allContentfulBioImageContact(
-      filter: { contentful_id: { eq: "2nH2prijQalfGjAOnIQfbt" } }
-    ) {
-      edges {
-        node {
+          facebook
+          behance
           bio {
             raw
           }
           descriptionImage {
             title
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
+            fluid(maxWidth: 617, maxHeight: 260, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
           }
           homeImage {
             title
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
+            fluid(maxWidth: 1285, maxHeight: 409, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
           }
@@ -149,4 +121,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

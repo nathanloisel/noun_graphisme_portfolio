@@ -1,0 +1,370 @@
+{
+  "Reducer": {
+	 	"scope": "typescript",
+    "prefix": "tsreduc",
+    "body": [
+      "import * as actions from './actions';",
+      "import { ActionType, getType } from 'typesafe-actions';",
+			"import produce from 'immer';",
+      "",
+      "export type ${1}State = Readonly<{}>;",
+      "",
+      "const initialState: ${1}State = {};",
+      "",
+      "export type ${1}Action = ActionType<typeof actions>;",
+      "",
+			"export default (state: ${1}State = initialState, action: ${1}Action) =>",
+			"  produce(state, (draft) => {",
+      "    switch (action.type) {",
+      "      default:",
+      "        return state;",
+      "    }",
+      "  });"
+    ],
+    "description": "Create a Reducer."
+  },
+  "Actions": {
+    "prefix": "tsactions",
+	 	"scope": "typescript",
+    "body": [
+      "import { createAction } from 'typesafe-actions';",
+      "",
+      "export const ${1:defaultAction} = createAction('nx/${2:default/DEFAULT_ACTION}', action => () =>",
+      "  action({  })",
+      ");"
+    ],
+    "description": "Create a actions file."
+  },
+  "Icon": {
+    "prefix": "tsnxicon",
+	 	"scope": "typescriptreact",
+    "body": [
+      "import React from 'react';",
+      "",
+			"export default (props: React.SVGProps<SVGSVGElement>) => (",
+			"  {/*<svg width='1em' height='1em' viewBox='0 0 29 29' fill='none' {...props}>*/}",
+      "  ${1:<svg />}",
+      ");"
+    ],
+    "description": "Create a actions file."
+  },
+  "useSmallScreen": {
+    "prefix": "useSmallScreen",
+	 	"scope": "typescriptreact",
+    "body": [
+			"const isSmallScreen = useSmallScreen${1}();"
+    ],
+    "description": "Create a actions file."
+	},
+  "Action": {
+	 	"scope": "typescript",
+    "prefix": "tsaction",
+    "body": [
+      "export const ${1:defaultAction} = createAction('nx/${2:default/DEFAULT_ACTION}', action => () =>",
+      "  action({  })",
+      ");"
+    ],
+    "description": "Create a action."
+  },
+  "AsyncAction": {
+	 	"scope": "typescript",
+    "prefix": "tsasyncaction",
+    "body": [
+      "export const ${1:defaultAsyncAction} = createAsyncAction('nx/${2:default/DEFAULT_ASYNC_ACTION}_REQUEST', 'nx/${2:default/DEFAULT_ASYNC_ACTION}_SUCCESS', 'nx/${2:default/DEFAULT_ASYNC_ACTION}_ERROR')<",
+      "  ${3:undefined},",
+      "  ${4:undefined},",
+      "  ${5:undefined}",
+      ">();"
+    ],
+    "description": "Create a async action."
+  },
+  "Epic": {
+	 	"scope": "typescript",
+    "prefix": "tsepic",
+    "body": [
+      "import { RootAction, RootState, Services } from 'NxTypes';",
+      "import { Epic } from 'redux-observable';",
+      "import { ignoreElements, filter } from 'rxjs/operators';",
+      "import { isActionOf } from 'typesafe-actions';",
+      "",
+      "import * as actions from './actions';",
+      "",
+      "",
+      "export const ${1:defaultEpic}: Epic<RootAction, RootAction, RootState, Services> = (action$, state$, { api, logger }) =>",
+      "  action$.pipe(",
+      "    filter(isActionOf(actions.${2:defaultAction})),",
+      "    ignoreElements()",
+      "  );"
+    ],
+    "description": "Create a epic."
+  },
+  "Message": {
+	 	"scope": "typescript",
+    "prefix": "tsmessage",
+    "body": [
+      "/*",
+			" * ${1:general} feature messages",
+			" *",
+			" * This contains all the text messages used by the ${1:general} feature.",
+			" */",
+			"import { defineMessages } from 'react-intl';",
+			"",
+			"export const scope = 'nx.${1:general}';",
+			"",
+			"export default defineMessages({",
+			"  //example: {",
+			"  //   id: `\\${scope}.example`,",
+			"  //   defaultMessage: 'example',",
+			"  //   description: 'example description',",
+			"  //},",
+			"});",
+    ],
+    "description": "Create a message file."
+  },
+  "UseIntl": {
+		"scope": "typescriptreact",
+    "prefix": "tsuseintl",
+    "body": [
+      "const intl = useIntl();",
+    ],
+    "description": "Create use intl statement."
+  },
+  "UseState": {
+		"scope": "typescriptreact",
+    "prefix": "tsusestate",
+    "body": [
+      "const $1 = React.useState($2);",
+    ],
+    "description": "Create use state statement."
+  },
+  "UseEffect": {
+		"scope": "typescriptreact",
+    "prefix": "tsuseeffect",
+    "body": [
+      "React.useEffect(() => {$1}, []);",
+    ],
+    "description": "Create use effect statement."
+  },
+  "UseCallback": {
+		"scope": "typescriptreact",
+    "prefix": "tsusecallback",
+    "body": [
+      "const ${1:onClick} = React.useCallback(() => {}, []);",
+    ],
+    "description": "Create use callback statement."
+  },
+  "FormatMessage": {
+		"scope": "typescriptreact",
+    "prefix": "tsFormatMessage",
+    "body": [
+      "intl.formatMessage(messages.${1})",
+    ],
+    "description": "Create intl formatMessage statement."
+  },
+  "UseMemo": {
+		"scope": "typescriptreact",
+    "prefix": "tsusememo",
+    "body": [
+      "const  ${1:value} = React.useMemo(() => {}, []);",
+    ],
+    "description": "Create use memo statement."
+  },
+  "Selectors": {
+		"scope": "typescript",
+    "prefix": "tsselectors",
+    "body": ["import { RootState } from 'NxTypes';", "", "export const get${1}State = (state: RootState) => state.${2};", ""],
+    "description": "create a selector."
+  },
+  "Interface": {
+		"scope": "typescript, typescriptreact",
+    "prefix": "interface",
+    "body": ["interface ${1:Props} {}", ""],
+    "description": "create a interface."
+  },
+	"React Functional Component": {
+    "scope": "typescriptreact",
+		"prefix": "tsrfc",
+		"body": [
+			"import * as React from 'react';",
+			"",
+			"export interface I${1:App}Props {",
+			"}",
+			"",
+			"const ${1:App}: React.FC<I${1:App}Props> = (props) => {",
+			"//    const [${2:state}, set${2:State}] = useState(${3:undefined});",
+			"    return (",
+			"      <div>",
+			"        ${2}",
+			"      </div>",
+			"    );",
+			"};",
+			"",
+			"export default ${1:App};",
+			""
+		],
+		"description": "Create a React Functional Component."
+	},
+	"Component Story": {
+    "scope": "typescriptreact",
+		"prefix": "tsstory",
+		"body": [
+			"import React from 'react';",
+			"import { Story, Meta } from '@storybook/react/types-6-0';",
+			"import { action } from '@storybook/addon-actions';",
+			"",
+			"import ${2:Component}, { I${2:Component}Props } from '.';",
+			"",
+			"export default {",
+			"  title: '${1:App}/${2:Component}',",
+			"  component: ${2:Component},",
+			"} as Meta;",
+			"",
+			"const Template: Story<I${2:Component}Props> = (args) => {",
+			"  return <${2:Component} {...args} />;",
+			"};",
+			"",
+			"export const ${2:Component}Ex = Template.bind({});",
+			"",
+			"${2:Component}Ex.args = {",
+			"};",
+			""
+		],
+		"description": "Create a React Functional Component."
+	},
+	"React Functional Component Without import and default export": {
+    "scope": "typescriptreact",
+		"prefix": "tsafunctioncomp",
+		"body": [
+			"export interface I${1:Cmp}Props {}",
+			"",
+			"export const ${1:Cmp}: React.FC<I${1:Cmp}Props> = (props) => {",
+			"  return </div>;",
+			"};",
+			""
+		],
+		"description": "Create a React Functional Component Without import and default export."
+	},
+	"Container": {
+    "scope": "typescriptreact",
+		"prefix": "tsrcont",
+		"body": [
+			"import * as React from 'react';",
+			"// import { useDispatch, useSelector } from 'react-redux';",
+			"",
+			"export interface IProps {",
+			"}",
+			"",
+			"",
+			"const ${1:App}: React.FunctionComponent<IProps> = (props) => {",
+			"//    const dispatch = useDispatch();",
+			"//    const state = useSelector((state) => state);",
+			"",
+			"    return <span />;",
+			"}",
+			"",
+			"export default ${1:App}",
+			""
+		],
+		"description": "Create React + Redux container"
+	},
+	"constructor": {
+    "scope": "typescriptreact",
+		"prefix": "conc",
+		"body": ["constructor(props: ${1}) {", "  super(props);", "  ${2}", "}"],
+		"description": "Add a constructor in class."
+	},
+	"render": {
+    "scope": "typescriptreact",
+		"prefix": "ren",
+		"body": ["public render() {", "  return (", "    ${1}", "  );", "}"],
+		"description": "When called, it should examine this.props and this.state and return a single React element."
+	},
+	"componentDidMount": {
+    "scope": "typescriptreact",
+		"prefix": "cdm",
+		"body": ["public componentDidMount() {", "  ${1}", "}"],
+		"description": "Invoked immediately after a component is mounted."
+	},
+	"shouldComponentUpdate": {
+    "scope": "typescriptreact",
+		"prefix": "scu",
+		"body": [
+			"public shouldComponentUpdate(nextProps: ${1}, nextState: ${2}) {",
+			"  ${3}",
+			"}"
+		],
+		"description": "Invoked before rendering when new props or state are being received."
+	},
+	"componentDidUpdate": {
+    "scope": "typescriptreact",
+		"prefix": "cdu",
+		"body": [
+			"public componentDidUpdate(prevProps: ${1}, prevState: ${2}) {",
+			"  ${3}",
+			"}"
+		],
+		"description": "Invoked immediately after updating occurs. This method is not called for the initial render"
+	},
+	"componentWillUnmount": {
+    "scope": "typescriptreact",
+		"prefix": "cwum",
+		"body": ["public componentWillUnmount() {", "  ${1}", "}"],
+		"description": "Invoked immediately before a component is unmounted and destroyed"
+	},
+	"componentSetState": {
+    "scope": "typescriptreact",
+		"prefix": "sst",
+		"body": ["this.setState(${1});"],
+		"description": "Performs a shallow merge of nextState into current state"
+	},
+	"bind method": {
+    "scope": "typescriptreact, typescript",
+		"prefix": "bnd",
+		"body": ["this.${1} = this.${1}.bind(this);"],
+		"description": "bind this in method"
+	},
+	"method": {
+    "scope": "typescriptreact, typescript",
+		"prefix": "met",
+		"body": ["public ${1:methodName} = (${2:x}: ${3:any}) => {", "  ${4}", "}"],
+		"description": "Create a method"
+	},
+	"import": {
+    "scope": "typescriptreact, typescript",
+		"prefix": "imt",
+		"body": ["import { $2 } from '$1';"],
+		"description": "Create a import"
+	},
+	"import all": {
+    "scope": "typescriptreact, typescript",
+		"prefix": "imta",
+		"body": ["import * as $1 from '$2';"],
+		"description": "Import everything from module"
+	},
+	"import default": {
+    "scope": "typescriptreact, typescript",
+		"prefix": "imtd",
+		"body": ["import $1 from '$2';"],
+		"description": "Create a default import"
+	},
+	"getDerivedStateFromProps": {
+    "scope": "typescriptreact",
+		"prefix": "gdsfp",
+		"body": [
+			"static getDerivedStateFromProps(nextProps: ${1}, prevState: ${2}): Partial<${2}> | null {",
+			"  ${3}",
+			"}"
+		],
+		"description": "Invoked right before calling the render method, both on the initial mount and on subsequent updates"
+	},
+	"getSnapshotBeforeUpdate": {
+    "scope": "typescriptreact",
+		"prefix": "gsbu",
+		"body": [
+			"getSnapshotBeforeUpdate(prevProps: ${1}, prevState: ${2}) {",
+			"  ${3}",
+			"}"
+		],
+		"description": "Invoked right before the most recently rendered output is committed to e.g. the DOM"
+	}
+}

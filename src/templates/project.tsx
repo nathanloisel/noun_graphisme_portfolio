@@ -1,65 +1,61 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
-import Img from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 
 import Layout from '../components/layout';
-import {IProjectPreview, ISiteMetaData} from '../pages';
-import RichText from '../components/rich-text';
+import { IRichText, ISiteMetaData, ProjectFilters } from '../pages';
+import Projet from '../components/projet';
+
+export interface IProject {
+  title: string;
+  sousTitre: string;
+  category: ProjectFilters;
+  description: IRichText;
+  publishDate: string;
+  client?: string;
+  images: Array<{
+    title: string;
+    fluid: FluidObject;
+  }>;
+  imagesPreview: Array<{
+    title: string;
+    fluid: FluidObject;
+  }>;
+  heroImage: {
+    title: string;
+    fluid: FluidObject;
+  };
+}
 
 interface IProjectTemplateProps {
   location: Location;
   data: {
-    contentfulProjet: IProjectPreview;
-    site: {siteMetadata: ISiteMetaData};
-  }
+    contentfulProjet: IProject;
+    site: { siteMetadata: ISiteMetaData };
+    next?: string;
+  };
+  pageContext: {
+    slug: string;
+    next?: string;
+  };
 }
 
-const ProjetTemplate: React.FC<IProjectTemplateProps> =({data, location}) => {
-
+const ProjetTemplate: React.FC<IProjectTemplateProps> = ({ data, pageContext }) => {
+  console.log(data);
   const projet = data.contentfulProjet;
   const siteTitle = data.site.siteMetadata.title;
-  const hero = projet.heroImage;
+  const nextProject = pageContext.next;
   return (
-    <Layout location={location}>
-      <div>
+    <Layout>
+      <>
         <Helmet title={`${projet.title} | ${siteTitle}`} />
-        <div>
-          <h1>{projet.title}</h1>
-          <span>project.category</span>
-          <h3>{projet.sousTitre}</h3>
-          <RichText richText={projet.description} />
-          <div>
-            <p>DATE: {projet.publishDate}</p>
-            {projet.client && <p>CLIENT : {projet.client}</p>}
-          </div>
-          <button>Projet suivant</button>
-        </div>
-        <div>
-          <div>
-            <Img
-              alt={hero.title}
-              fluid={hero.fluid}
-            />
-          </div>
-          <div>
-            {/* images */}
-          </div>
-        </div>
-        <div className="wrapper">
-          <p
-            style={{
-              display: 'block',
-            }}
-          >
-            {projet.publishDate}
-          </p>
-        </div>
-      </div>
+        <Projet projet={projet} nextProject={nextProject} />
+      </>
     </Layout>
   );
-}
-export default ProjetTemplate
+};
+export default ProjetTemplate;
 
 export const query = graphql`
   query ProjetBySlug($slug: String!) {
@@ -68,18 +64,33 @@ export const query = graphql`
         title
       }
     }
-    contentfulProjet(slug: { eq: $slug }) {
+    contentfulProjet(fields: { slug: { eq: $slug } }) {
       title
-      publishDate(formatString: "MMMM Do, YYYY")
-      heroImage {
-        title
-        fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
-        }
-      }
+      category
+      sousTitre
+      client
+      publishDate(formatString: "MMMM YYYY")
       description {
         raw
       }
+      heroImage {
+        title
+        fluid(maxWidth: 827, maxHeight: 410, resizingBehavior: SCALE) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      imagesPreview: images {
+        title
+        fluid(maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
+          ...GatsbyContentfulFluid
+        }
+      }
+      images {
+        title
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
     }
   }
-`
+`;
