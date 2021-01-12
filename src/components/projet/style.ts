@@ -3,7 +3,7 @@ import { OrangeButton } from '../buttons';
 import DotsIcon from '../icons/dots';
 import RichText from '../rich-text';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
   display: flex;
   flex-direction: row;
   margin-top: 90px;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
   `)}
 `;
-export const Details = styled.div`
+export const Details = styled.section`
   flex: 1;
   margin-right: 90px;
   position: relative;
@@ -71,7 +71,7 @@ export const DateClient = styled.div`
   }
 `;
 
-export const Images = styled.div`
+export const Images = styled.section`
   flex: 2;
 `;
 export const SmallImageList = styled.div`

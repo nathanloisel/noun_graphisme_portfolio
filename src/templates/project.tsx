@@ -1,11 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import { FluidObject } from 'gatsby-image';
 
 import Layout from '../components/layout';
 import { IRichText, ISiteMetaData, ProjectFilters } from '../pages';
 import Projet from '../components/projet';
+import SEO from '../components/seo';
 
 export interface IProject {
   title: string;
@@ -42,14 +42,18 @@ interface IProjectTemplateProps {
 }
 
 const ProjetTemplate: React.FC<IProjectTemplateProps> = ({ data, pageContext }) => {
-  console.log(data);
   const projet = data.contentfulProjet;
   const siteTitle = data.site.siteMetadata.title;
+  const siteDescription = data.site.siteMetadata.description;
   const nextProject = pageContext.next;
   return (
     <Layout>
       <>
-        <Helmet title={`${projet.title} | ${siteTitle}`} />
+        <SEO
+          title={`${projet.title} | ${siteTitle}`}
+          description={`${projet.title} - ${projet.sousTitre} - ${siteDescription}`}
+          image={projet.heroImage.fluid.src}
+        />
         <Projet projet={projet} nextProject={nextProject} />
       </>
     </Layout>
@@ -62,6 +66,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
     contentfulProjet(fields: { slug: { eq: $slug } }) {
@@ -76,19 +81,19 @@ export const query = graphql`
       heroImage {
         title
         fluid(maxWidth: 827, maxHeight: 410, resizingBehavior: SCALE) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       imagesPreview: images {
         title
         fluid(maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
       images {
         title
         fluid {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
     }

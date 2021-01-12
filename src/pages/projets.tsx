@@ -1,11 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 
 import Hero from '../components/hero';
 import Layout from '../components/layout';
 import { IBioImageContact, IProjectPreview, ISiteMetaData } from '.';
 import ProjectsContainer from '../containers/ProjectsContainer';
+import SEO from '../components/seo';
 
 interface IProjetsProps {
   data: {
@@ -24,7 +24,7 @@ const Projets: React.FC<IProjetsProps> = ({ data, location }) => {
   const projects = React.useMemo(() => data.allContentfulProjet.edges.map((p) => p.node), [data.allContentfulProjet.edges]);
   return (
     <Layout>
-      <Helmet title={siteTitle} />
+      <SEO title={siteTitle} />
       <Hero homeImage={meta.node.projetsImage} text={meta.node.projetsLabel} />
       <ProjectsContainer projects={projects} email={meta.node.email} />
     </Layout>
@@ -49,7 +49,7 @@ export const pageQuery = graphql`
           previewImage {
             title
             fluid(maxWidth: 280, maxHeight: 260) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           fields {
@@ -68,7 +68,7 @@ export const pageQuery = graphql`
           projetsImage {
             title
             fluid(maxWidth: 1285, maxHeight: 409, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }

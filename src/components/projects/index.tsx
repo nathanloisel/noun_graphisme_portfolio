@@ -19,7 +19,7 @@ const Projects: React.FC<IProjectsProps> = ({ projects, filter, onFilterChange, 
     window.location.href = `mailto:${email}?subject=Demande de devis`;
   }, [email]);
   return (
-    <>
+    <main>
       <StyledFilters onChange={onFilterChange} filter={filter} />
       <List>
         {projects.map((p) => (
@@ -30,7 +30,7 @@ const Projects: React.FC<IProjectsProps> = ({ projects, filter, onFilterChange, 
         <OrangeButton onClick={onMoreClick}>En savoir plus {'>'}</OrangeButton>
         <BlueButton onClick={onContactClick}>Demande de devis {'>'}</BlueButton>
       </Buttons>
-    </>
+    </main>
   );
 };
 

@@ -56,6 +56,25 @@ module.exports = {
         source: ['title'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-html-attributes',
+      options: {
+        lang: 'fr',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: 'G-4EPED7H1BZ',
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+      },
+    },
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-contentful',

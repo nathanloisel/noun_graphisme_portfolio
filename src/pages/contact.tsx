@@ -1,10 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import { IBioImageContact, ISiteMetaData } from '.';
 import Layout from '../components/layout';
 import styled from 'styled-components';
 import RichText from '../components/rich-text';
+import SEO from '../components/seo';
 
 interface IContactProps {
   data: {
@@ -28,7 +28,7 @@ const StyledRichText = styled(RichText)`
     color: ${({ theme }) => theme.color.dark_grey.hex};
   }
 `;
-const Details = styled.div`
+const Details = styled.main`
   display: flex;
   justify-content: space-between;
   margin-top: 150px;
@@ -52,7 +52,7 @@ const Contact: React.FC<IContactProps> = ({ data, location }) => {
   const [meta] = data.allContentfulBioImageContact.edges;
   return (
     <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
-      <Helmet title={siteTitle} />
+      <SEO title={siteTitle} />
       <Title>Un projet ? Besoin d’un devis ? Contactez-moi</Title>
       <Details itemScope itemType="https://schema.org/Business">
         <h3>

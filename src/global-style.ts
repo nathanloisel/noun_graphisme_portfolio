@@ -17,11 +17,13 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "DIN Pro";
     src: local('DIN Pro'), url('${DINProBold}') format('woff2');
     font-weight: bold;
+    font-display: swap;
   }
   @font-face{
     font-family: "DIN Pro";
     src: local('DIN Pro'), url('${DINProRegular}') format('woff2');
     font-weight: normal;
+    font-display: swap;
   }
 
 
@@ -73,7 +75,6 @@ export const GlobalStyle = createGlobalStyle`
     display: none;
   }
   a {
-    background-color: transparent;
     -webkit-text-decoration-skip: objects;
     text-decoration: none;
   }
@@ -220,7 +221,7 @@ export const GlobalStyle = createGlobalStyle`
     font: inherit;
   }
   html {
-    font: 112.5%/1.45em georgia, serif;
+    font: 16px/1.45em "DIN Pro", serif;
     box-sizing: border-box;
     overflow-y: scroll;
   }

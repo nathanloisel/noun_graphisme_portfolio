@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import RichText from '../rich-text';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.section`
   display: flex;
 
   ${({ theme }) =>

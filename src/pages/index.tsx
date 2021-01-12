@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import { ContentfulRichTextGatsbyReference, RenderRichTextData } from 'gatsby-source-contentful/rich-text';
 import { FluidObject } from 'gatsby-image';
 
@@ -9,6 +8,7 @@ import Layout from '../components/layout';
 import HomeFilters from '../components/home-filters';
 import HomeDescription from '../components/home-description';
 import styled from 'styled-components';
+import SEO from '../components/seo';
 
 export type IRichText = RenderRichTextData<ContentfulRichTextGatsbyReference>;
 
@@ -22,6 +22,7 @@ export enum ProjectFilters {
 
 export interface ISiteMetaData {
   title: string;
+  description: string;
 }
 
 export interface IProjectPreview {
@@ -81,10 +82,12 @@ const Home: React.FC<IHomeProps> = ({ data, location }) => {
   const [meta] = data.allContentfulBioImageContact.edges;
   return (
     <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
-      <Helmet title={siteTitle} />
+      <SEO title={siteTitle} />
       <Hero homeImage={meta.node.homeImage} />
-      <StyledHomeFilters />
-      <StyledHomeDescription bio={meta.node.bio} descriptionImage={meta.node.descriptionImage} />
+      <main>
+        <StyledHomeFilters />
+        <StyledHomeDescription bio={meta.node.bio} descriptionImage={meta.node.descriptionImage} />
+      </main>
     </Layout>
   );
 };
@@ -108,13 +111,13 @@ export const pageQuery = graphql`
           descriptionImage {
             title
             fluid(maxWidth: 617, maxHeight: 260, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           homeImage {
             title
             fluid(maxWidth: 1285, maxHeight: 409, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }

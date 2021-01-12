@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Filters from '../filters';
 import ProjectPreview from '../project-preview';
 
-export const List = styled.div`
+export const List = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

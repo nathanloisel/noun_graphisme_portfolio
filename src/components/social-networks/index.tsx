@@ -9,17 +9,21 @@ export interface ISocialNetworksProps {
   className?: string;
 }
 
-const SocialNetworks: React.FC<ISocialNetworksProps> = ({facebookUrl, behanceUrl, className}) => {
-    return (
-      <Wrapper className={className}>
-        {facebookUrl && <SocialLink href={facebookUrl} target="_blank">
-          <Facebook width="24px" />
-        </SocialLink>}
-        {behanceUrl && <SocialLink href={behanceUrl} target="_blank">
-          <Behance width="24px" />
-        </SocialLink>}
-      </Wrapper>
-    );
+const SocialNetworks: React.FC<ISocialNetworksProps> = ({ facebookUrl, behanceUrl, className }) => {
+  return (
+    <Wrapper className={className}>
+      {facebookUrl && (
+        <SocialLink href={facebookUrl} target="_blank" rel="noreferrer">
+          <Facebook width="24px" title="noun graphisme facebook" />
+        </SocialLink>
+      )}
+      {behanceUrl && (
+        <SocialLink href={behanceUrl} target="_blank" rel="noreferrer">
+          <Behance width="24px" title="noun graphisme behance" />
+        </SocialLink>
+      )}
+    </Wrapper>
+  );
 };
 
 export default SocialNetworks;

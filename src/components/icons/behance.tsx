@@ -1,11 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
+import { ISVGProps } from './facebook';
 
-function Behance(props: React.SVGProps<SVGSVGElement>) {
+function Behance({ title, description, ...props }: ISVGProps) {
+  const labelId = title && `svg${title.replace(' ', '')}`;
   return (
-    <svg
-      viewBox="0 0 24 25"
-      {...props}
-    >
+    <svg viewBox="0 0 24 25" aria-labelledby={labelId} {...props}>
+      {title && <title id={labelId}>{title}</title>}
+      {description && <desc>{description}</desc>}
       <path
         fillRule="evenodd"
         clipRule="evenodd"
