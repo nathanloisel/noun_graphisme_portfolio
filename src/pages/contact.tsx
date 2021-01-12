@@ -25,6 +25,10 @@ const Title = styled.h1`
 const MapContainer = styled.div`
   width: 100%;
   height: 500px;
+  margin-top: 75px;
+  .mapboxgl-ctrl-bottom-right {
+    display: none;
+  }
 `;
 const StyledRichText = styled(RichText)`
   p {
@@ -33,10 +37,10 @@ const StyledRichText = styled(RichText)`
     color: ${({ theme }) => theme.color.dark_grey.hex};
   }
 `;
-const Details = styled.main`
+const Details = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 150px;
+  margin-top: 75px;
   ${({ theme }) =>
     theme.breakpoints.under_m(`
       align-items: center;
@@ -60,9 +64,16 @@ const Contact: React.FC<IContactProps> = ({ data }) => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current as HTMLElement,
       // See style options here: https://docs.mapbox.com/api/maps/#styles
+      // 8.16/46.082/5.714
       style: 'mapbox://styles/loudupont/ckju1uyrs0wgw19o2k3zlgl5k',
-      center: [-104.9876, 39.7405],
-      zoom: 12.5,
+      center: [5.714, 46.082],
+      zoom: 8.16,
+      minZoom: 8.16,
+      dragPan: false,
+      scrollZoom: false,
+      boxZoom: false,
+      touchZoomRotate: false,
+      dragRotate: false,
     });
 
     // add navigation control (the +/- zoom buttons)
@@ -75,22 +86,24 @@ const Contact: React.FC<IContactProps> = ({ data }) => {
   return (
     <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
       <SEO title={'Contact'} />
-      <Title>Un projet ? Besoin d’un devis ? Contactez-moi</Title>
-      <MapContainer ref={mapContainerRef} />
-      <Details itemScope itemType="https://schema.org/Business">
-        <h3>
-          <a href={`mailto:${meta.node.email}?subject=Demande de devis`} itemProp="email">
-            {meta.node.email}
-          </a>
-        </h3>
-        <h3>
-          <a href={`tel:${meta.node.phone}`} itemProp="telephone">
-            {meta.node.phone}
-          </a>
-        </h3>
+      <main>
+        <Title>Un projet ? Besoin d’un devis ? Contactez-moi</Title>
+        <MapContainer ref={mapContainerRef} />
+        <Details itemScope itemType="https://schema.org/Business">
+          <h3>
+            <a href={`mailto:${meta.node.email}?subject=Demande de devis`} itemProp="email">
+              {meta.node.email}
+            </a>
+          </h3>
+          <h3>
+            <a href={`tel:${meta.node.phone}`} itemProp="telephone">
+              {meta.node.phone}
+            </a>
+          </h3>
 
-        <StyledRichText richText={meta.node.address} itemProp="address" />
-      </Details>
+          <StyledRichText richText={meta.node.address} itemProp="address" />
+        </Details>
+      </main>
     </Layout>
   );
 };
