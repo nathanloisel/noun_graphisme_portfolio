@@ -14,6 +14,7 @@ const breakpoints = {
   under_s: (params: string) => `@media all (max-width: 480px) {${params}}`,
   under_xs: (params: string) => `@media all (max-width: 479px) {${params}}`,
 
+  upper_xl: (params: string) => `@media all  and (min-width: 1200px) {${params}}`,
   upper_l: (params: string) => `@media all  and (min-width: 960px) {${params}}`,
   upper_m: (params: string) => `@media all and (min-width: 769px) {${params}}`,
   upper_s: (params: string) => `@media all (min-width: 480px) {${params}}`,

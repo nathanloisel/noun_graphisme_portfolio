@@ -647,7 +647,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   html {
-    ${(props) => props.theme.breakpoints.upper_l('font-size: 100%;')}
+    ${(props) => props.theme.breakpoints.upper_xl('font-size: 100%;')}
+    ${(props) => props.theme.breakpoints.l('font-size: 82.5%;')}
     ${(props) => props.theme.breakpoints.m('font-size: 82.5%;')}
     ${(props) => props.theme.breakpoints.s('font-size: 72.5%;')}
     ${(props) => props.theme.breakpoints.xs('font-size: 72.5%;')}

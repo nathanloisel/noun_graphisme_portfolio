@@ -11,7 +11,7 @@ const HomeFilters: React.FC<IHomeFiltersProps> = ({ className }) => {
   return (
     <FiltersWrapper className={className}>
       {links.map((link, index) => (
-        <StyledFilter text={link} num={index + 1} />
+        <StyledFilter key={link} text={link} num={index + 1} />
       ))}
     </FiltersWrapper>
   );

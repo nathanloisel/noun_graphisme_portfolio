@@ -13,14 +13,14 @@ export const FiltersWrapper = styled.div`
 export const StyledFilter = styled(Filter)`
   flex: 1;
   ${({ theme }) =>
-    theme.breakpoints.under_m(`
+    theme.breakpoints.under_l(`
       flex: 0 45%;
     `)}
 
   &:not(:last-of-type) {
     margin-right: 85px;
     ${({ theme }) =>
-      theme.breakpoints.under_m(`
+      theme.breakpoints.under_l(`
       margin-right: 10px;
     `)}
   }

@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 
 import Layout from '../components/layout';
-import { IRichText, ISiteMetaData, ProjectFilters } from '../pages';
+import { IRichText, ProjectFilters } from '../pages';
 import Projet from '../components/projet';
 import SEO from '../components/seo';
 
@@ -32,7 +32,6 @@ interface IProjectTemplateProps {
   location: Location;
   data: {
     contentfulProjet: IProject;
-    site: { siteMetadata: ISiteMetaData };
     next?: string;
   };
   pageContext: {
@@ -43,15 +42,13 @@ interface IProjectTemplateProps {
 
 const ProjetTemplate: React.FC<IProjectTemplateProps> = ({ data, pageContext }) => {
   const projet = data.contentfulProjet;
-  const siteTitle = data.site.siteMetadata.title;
-  const siteDescription = data.site.siteMetadata.description;
   const nextProject = pageContext.next;
   return (
     <Layout>
       <>
         <SEO
-          title={`${projet.title} | ${siteTitle}`}
-          description={`${projet.title} - ${projet.sousTitre} - ${siteDescription}`}
+          title={projet.title}
+          description={`${projet.title} - ${projet.sousTitre} - ${projet.description}`}
           image={projet.heroImage.fluid.src}
         />
         <Projet projet={projet} nextProject={nextProject} />
@@ -63,12 +60,6 @@ export default ProjetTemplate;
 
 export const query = graphql`
   query ProjetBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
     contentfulProjet(fields: { slug: { eq: $slug } }) {
       title
       category

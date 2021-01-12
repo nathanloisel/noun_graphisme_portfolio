@@ -32,9 +32,10 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: 'Noun Graphisme Portfolio',
-    siteUrl: process.env.NODE_ENV === 'development' ? `http://localhost:8000` : `https://noun-graphisme.fr`,
-    description: `Noun Graphisme Portfolio, graphiste indépendante, réalisation de logo, design web, motion design, print, carte de visite.`,
+    title: 'Noun graphisme Freelance - Haute Savoie 74',
+    siteUrl: process.env.NODE_ENV === 'development' ? `` : `https://noun-graphisme.fr`,
+    description: `Noun Graphisme Portfolio, graphiste indépendante, réalisation de logo, webdesign, motion design, print, carte de visite, charte graphique, identité visuelle.`,
+    keywords: `graphiste indépendant, freelance, studio de création, graphisme, design, webdesign, web, édition, publicité, logotype, illustration, communication, Haute Savoie, refonte graphique, motion design`,
   },
   pathPrefix: '/',
   plugins: [

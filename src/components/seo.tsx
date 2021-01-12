@@ -8,27 +8,26 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { ISiteMetaData } from '../pages';
 
 interface SEOProps {
   description?: string;
   lang?: string;
   meta?: [];
-  title: string;
+  title?: string;
   image?: string;
 }
 
 interface QueryResult {
   site: {
-    siteMetadata: {
-      title: string;
-      siteUrl: string;
-      description: string;
-    };
+    siteMetadata: ISiteMetaData;
   };
 }
 
 const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
-  const { site } = useStaticQuery<QueryResult>(
+  const {
+    site: { siteMetadata: metadata },
+  } = useStaticQuery<QueryResult>(
     graphql`
       query {
         site {
@@ -36,20 +35,22 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
             title
             description
             siteUrl
+            keywords
           }
         }
       }
     `,
   );
-
-  const metaDescription = description || site.siteMetadata.description;
+  console.log(metadata.title);
+  const metaDescription = description || metadata.description;
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      defaultTitle={metadata.title}
+      titleTemplate={`%s | ${metadata.title}`}
       meta={[
         {
           name: `description`,
@@ -58,6 +59,10 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          property: `og:locale`,
+          content: 'fr_FR',
         },
         {
           property: `og:description`,
@@ -69,23 +74,23 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
         },
         {
           property: `og:image`,
-          content: image && site.siteMetadata.siteUrl + image,
+          content: image && metadata.siteUrl + image,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: `og:url`,
+          content: metadata.siteUrl,
         },
         {
-          name: `twitter:creator`,
-          content: 'MoonTradin',
-        },
-        {
-          name: `twitter:title`,
+          property: `og:site_name`,
           content: title,
         },
         {
-          name: `twitter:description`,
-          content: metaDescription,
+          property: `robots`,
+          content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+        },
+        {
+          property: `keywords`,
+          content: metadata.keywords,
         },
       ].concat(meta || [])}
     />

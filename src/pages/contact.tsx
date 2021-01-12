@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { IBioImageContact, ISiteMetaData } from '.';
+import { IBioImageContact } from '.';
 import Layout from '../components/layout';
 import styled from 'styled-components';
 import RichText from '../components/rich-text';
@@ -8,7 +8,6 @@ import SEO from '../components/seo';
 
 interface IContactProps {
   data: {
-    site: { siteMetadata: ISiteMetaData };
     allContentfulBioImageContact: {
       edges: Array<{ node: IBioImageContact }>;
     };
@@ -47,12 +46,11 @@ const Details = styled.main`
   }
 `;
 
-const Contact: React.FC<IContactProps> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
+const Contact: React.FC<IContactProps> = ({ data }) => {
   const [meta] = data.allContentfulBioImageContact.edges;
   return (
     <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
-      <SEO title={siteTitle} />
+      <SEO title={'Contact'} />
       <Title>Un projet ? Besoin d’un devis ? Contactez-moi</Title>
       <Details itemScope itemType="https://schema.org/Business">
         <h3>
@@ -75,11 +73,6 @@ export default Contact;
 
 export const pageQuery = graphql`
   query ContactQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentfulBioImageContact(filter: { contentful_id: { eq: "2nH2prijQalfGjAOnIQfbt" } }) {
       edges {
         node {

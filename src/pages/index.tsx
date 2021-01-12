@@ -23,6 +23,8 @@ export enum ProjectFilters {
 export interface ISiteMetaData {
   title: string;
   description: string;
+  siteUrl: string;
+  keywords: string;
 }
 
 export interface IProjectPreview {
@@ -69,7 +71,6 @@ const StyledHomeDescription = styled(HomeDescription)`
 
 interface IHomeProps {
   data: {
-    site: { siteMetadata: ISiteMetaData };
     allContentfulBioImageContact: {
       edges: Array<{ node: IBioImageContact }>;
     };
@@ -78,11 +79,10 @@ interface IHomeProps {
 }
 
 const Home: React.FC<IHomeProps> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
   const [meta] = data.allContentfulBioImageContact.edges;
   return (
     <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
-      <SEO title={siteTitle} />
+      <SEO />
       <Hero homeImage={meta.node.homeImage} />
       <main>
         <StyledHomeFilters />
@@ -95,11 +95,6 @@ export default Home;
 
 export const pageQuery = graphql`
   query HomeQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentfulBioImageContact(filter: { contentful_id: { eq: "2nH2prijQalfGjAOnIQfbt" } }) {
       edges {
         node {
