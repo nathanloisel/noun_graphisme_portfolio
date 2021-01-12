@@ -33,7 +33,7 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Noun graphisme Freelance - Haute Savoie 74',
-    siteUrl: process.env.NODE_ENV === 'development' ? `` : `https://noun-graphisme.fr`,
+    siteUrl: process.env.NODE_ENV === 'development' ? `http://localhost:8000` : `https://noun-graphisme.fr`,
     description: `Je suis Lou ! Pour vous, je crée une identité visuelle qui vous ressemble. Pour vos projets d'éditions ou digitaux, je vous accompagne dans la conception de vos supports de communication adaptés depuis la Haute-Savoie.`,
     keywords: `graphiste indépendant, freelance, studio de création, graphisme, design, webdesign, web, édition, publicité, logotype, illustration, communication, Haute Savoie, refonte graphique, motion design`,
   },
@@ -93,7 +93,6 @@ module.exports = {
         description: `Noun Graphisme Portfolio: Tous à propos de mes réalisations graphiques.`,
         theme_color: `#FFF`,
         display: `standalone`,
-        icon: `src/images/noun-270x270.png`,
         icons: [
           {
             src: 'src/images/noun-48x48.png',

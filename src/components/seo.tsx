@@ -9,10 +9,10 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ISiteMetaData } from '../pages';
+import ogImage from '../images/noun_graphisme_og_image.png';
 
 interface SEOProps {
   description?: string;
-  lang?: string;
   meta?: [];
   title?: string;
   image?: string;
@@ -24,7 +24,7 @@ interface QueryResult {
   };
 }
 
-const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
+const SEO: React.FC<SEOProps> = ({ description, meta, title, image }) => {
   const {
     site: { siteMetadata: metadata },
   } = useStaticQuery<QueryResult>(
@@ -41,7 +41,8 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
       }
     `,
   );
-  console.log(metadata.title);
+  const ogTitle = title ? `${title} | ${metadata.title}` : metadata.title;
+  const img = image || ogImage;
   const metaDescription = description || metadata.description;
   return (
     <Helmet
@@ -58,7 +59,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: ogTitle,
         },
         {
           property: `og:locale`,
@@ -74,7 +75,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
         },
         {
           property: `og:image`,
-          content: image && metadata.siteUrl + image,
+          content: img && metadata.siteUrl + img,
         },
         {
           property: `og:url`,
