@@ -35,7 +35,7 @@ export const theme = {
   color: {
     grey: {
       rgba: (a: number) => `rgba(123, 118, 117, ${a})`,
-      hex: '#7B7675' as '#7B7675',
+      hex: '#5C5757' as '#5C5757',
     },
     dark_grey: {
       rgba: (a: number) => `rgba(97, 95, 95, ${a})`,

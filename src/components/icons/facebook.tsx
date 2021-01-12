@@ -6,7 +6,7 @@ export interface ISVGProps extends React.SVGProps<SVGSVGElement> {
 }
 
 function Facebook({ title, description, ...props }: ISVGProps) {
-  const labelId = title && `svg${title.replace(' ', '')}`;
+  const labelId = title && `svg${title.replaceAll(/\s/g, '')}`;
   return (
     <svg viewBox="0 0 24 25" aria-labelledby={labelId} {...props}>
       {title && <title id={labelId}>{title}</title>}

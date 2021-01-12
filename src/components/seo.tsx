@@ -46,7 +46,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: 'fr',
       }}
       title={title}
       defaultTitle={metadata.title}
@@ -62,7 +62,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, image }) => {
         },
         {
           property: `og:locale`,
-          content: 'fr_FR',
+          content: 'fr',
         },
         {
           property: `og:description`,

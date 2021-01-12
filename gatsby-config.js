@@ -34,7 +34,7 @@ module.exports = {
   siteMetadata: {
     title: 'Noun graphisme Freelance - Haute Savoie 74',
     siteUrl: process.env.NODE_ENV === 'development' ? `` : `https://noun-graphisme.fr`,
-    description: `Noun Graphisme Portfolio, graphiste indépendante, réalisation de logo, webdesign, motion design, print, carte de visite, charte graphique, identité visuelle.`,
+    description: `Je suis Lou ! Pour vous, je crée une identité visuelle qui vous ressemble. Pour vos projets d'éditions ou digitaux, je vous accompagne dans la conception de vos supports de communication adaptés depuis la Haute-Savoie.`,
     keywords: `graphiste indépendant, freelance, studio de création, graphisme, design, webdesign, web, édition, publicité, logotype, illustration, communication, Haute Savoie, refonte graphique, motion design`,
   },
   pathPrefix: '/',
@@ -55,12 +55,6 @@ module.exports = {
       resolve: `gatsby-plugin-slug-field`,
       options: {
         source: ['title'],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-html-attributes',
-      options: {
-        lang: 'fr',
       },
     },
     {
@@ -100,6 +94,56 @@ module.exports = {
         theme_color: `#FFF`,
         display: `standalone`,
         icon: `src/images/noun-270x270.png`,
+        icons: [
+          {
+            src: 'src/images/noun-48x48.png',
+            type: 'image/png',
+            sizes: '48x48',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-72x72.png',
+            type: 'image/png',
+            sizes: '72x72',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-96x96.png',
+            type: 'image/png',
+            sizes: '96x96',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-144x144.png',
+            type: 'image/png',
+            sizes: '144x144',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-192x192.png',
+            type: 'image/png',
+            sizes: '192x192',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-256x256.png',
+            type: 'image/png',
+            sizes: '256x256',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-384x384.png',
+            type: 'image/png',
+            sizes: '384x384',
+            purpose: 'any maskable',
+          },
+          {
+            src: 'src/images/noun-512x512.png',
+            type: 'image/png',
+            sizes: '512x512',
+            purpose: 'any maskable',
+          },
+        ],
       },
     },
     `gatsby-plugin-offline`,

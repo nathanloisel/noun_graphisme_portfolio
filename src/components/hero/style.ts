@@ -50,7 +50,7 @@ export const VerticalCopyrights = styled.p`
   height: 100%;
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  font-size: ${({ theme }) => theme.typo.xxs};
+  font-size: 0.91rem;
   color: ${({ theme }) => theme.color.grey.hex};
   text-align: center;
   transform: rotate(180deg);
