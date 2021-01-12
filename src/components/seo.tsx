@@ -9,6 +9,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ISiteMetaData } from '../pages';
+// @ts-ignore
 import ogImage from '../images/noun_graphisme_og_image.png';
 
 interface SEOProps {

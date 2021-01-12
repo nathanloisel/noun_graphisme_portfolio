@@ -17,10 +17,7 @@ export interface IProject {
   images: Array<{
     title: string;
     fluid: FluidObject;
-  }>;
-  imagesPreview: Array<{
-    title: string;
-    fluid: FluidObject;
+    preview: FluidObject;
   }>;
   heroImage: {
     title: string;
@@ -75,15 +72,12 @@ export const query = graphql`
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }
-      imagesPreview: images {
-        title
-        fluid(maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
-        }
-      }
       images {
         title
         fluid {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+        preview: fluid(maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
       }

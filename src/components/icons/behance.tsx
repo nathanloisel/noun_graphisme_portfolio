@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ISVGProps } from './facebook';
 
 function Behance({ title, description, ...props }: ISVGProps) {
-  const labelId = title && `svg${title.replaceAll(/\s/g, '')}`;
+  const labelId = title && `svg${title.replace(/\s/g, '')}`;
   return (
     <svg viewBox="0 0 24 25" aria-labelledby={labelId} {...props}>
       {title && <title id={labelId}>{title}</title>}

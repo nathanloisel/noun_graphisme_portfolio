@@ -82,9 +82,9 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
           </ImageButton>
         </ProjectHero>
         <SmallImageList>
-          {projet.imagesPreview.map(({ title, fluid }, index) => (
+          {projet.images.map(({ title, preview }, index) => (
             <ImageButton onClick={openLightboxOnSlide.bind(this, index)}>
-              <Img alt={title} fluid={fluid} />
+              <Img alt={title} fluid={preview} />
             </ImageButton>
           ))}
         </SmallImageList>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { ContentfulRichTextGatsbyReference, RenderRichTextData } from 'gatsby-source-contentful/rich-text';
-import { FixedObject, FluidObject } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 
 import Hero from '../components/hero';
 import Layout from '../components/layout';

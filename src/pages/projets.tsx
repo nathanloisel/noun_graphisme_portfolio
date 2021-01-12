@@ -41,7 +41,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           previewImage {
             title
-            fluid(maxWidth: 280, maxHeight: 260) {
+            fluid(maxWidth: 280, maxHeight: 260, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
