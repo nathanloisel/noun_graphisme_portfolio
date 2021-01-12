@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   padding: 30px 75px 80px 75px;
   ${({ theme }) =>
     theme.breakpoints.under_m(`
-  padding: 30px 15px 80px 15px;
+      padding: 30px 15px 80px 15px;
   `)}
 `;
 

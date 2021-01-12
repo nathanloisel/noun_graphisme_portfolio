@@ -6,18 +6,7 @@
 /* eslint-disable no-use-before-define */
 const React = require('react');
 const { LocationProvider } = require('@reach/router');
-const { ThemeProvider } = require('styled-components');
-
-const { GlobalStyle } = require('./src/global-style');
-const { theme } = require('./src/theme');
 
 exports.wrapPageElement = (apiCallbackContext) => {
-  return (
-    <LocationProvider>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {apiCallbackContext.element}
-      </ThemeProvider>
-    </LocationProvider>
-  );
+  return <LocationProvider>{apiCallbackContext.element}</LocationProvider>;
 };

@@ -44,7 +44,7 @@ exports.createPages = ({ graphql, actions }) => {
             component: projet,
             context: {
               slug,
-              next: next?.fields.slug,
+              next: next && next.fields.slug,
             },
           });
         });
