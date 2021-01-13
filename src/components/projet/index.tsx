@@ -80,14 +80,14 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
       <Images>
         <ProjectHero>
           <ImageButton onClick={openLightboxOnSlide.bind(this, 0)}>
-            {hero.fluid && <Img alt={hero.title} fluid={hero.fluid} />}
+            {hero.preview && <Img alt={hero.title} fluid={hero.preview} />}
             {hero.svg && <div dangerouslySetInnerHTML={{ __html: hero.svg.content }} />}
           </ImageButton>
         </ProjectHero>
         {projet.images && (
           <SmallImageList>
             {projet.images.map(({ title, preview, svg }, index) => (
-              <ImageButton key={index} onClick={openLightboxOnSlide.bind(this, index)}>
+              <ImageButton key={index} onClick={openLightboxOnSlide.bind(this, index + 1)}>
                 {preview && <Img alt={title} fluid={preview} />}
                 {svg && <div dangerouslySetInnerHTML={{ __html: svg.content }} />}
               </ImageButton>

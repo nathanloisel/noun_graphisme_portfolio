@@ -24,6 +24,7 @@ export interface IProject {
     title: string;
     fluid?: FluidObject;
     svg?: { content: string };
+    preview?: FluidObject;
   };
 }
 
@@ -67,8 +68,11 @@ export const query = graphql`
       }
       heroImage {
         title
-        fluid(maxWidth: 827, maxHeight: 410, resizingBehavior: SCALE) {
+        preview: fluid(quality: 80, maxWidth: 827, maxHeight: 410, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+        fluid(quality: 100, maxWidth: 2000) {
+          ...GatsbyContentfulFluid
         }
         svg {
           content
@@ -76,10 +80,10 @@ export const query = graphql`
       }
       images {
         title
-        fluid {
-          ...GatsbyContentfulFluid_withWebp_noBase64
+        fluid(quality: 100, maxWidth: 2000) {
+          ...GatsbyContentfulFluid
         }
-        preview: fluid(maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
+        preview: fluid(quality: 80, maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
         svg {
