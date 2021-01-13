@@ -35,7 +35,10 @@ export interface IProjectPreview {
   category: string;
   previewImage: {
     title: string;
-    fluid: FluidObject;
+    fluid?: FluidObject;
+    svg?: {
+      content: string;
+    };
   };
 }
 

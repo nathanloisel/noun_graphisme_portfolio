@@ -17,7 +17,8 @@ interface IProjetsProps {
   location: Location;
 }
 
-const Projets: React.FC<IProjetsProps> = ({ data, location }) => {
+const Projets: React.FC<IProjetsProps> = ({ data }) => {
+  console.log(data.allContentfulProjet.edges[2].node.previewImage);
   const [meta] = data.allContentfulBioImageContact.edges;
   const projects = React.useMemo(() => data.allContentfulProjet.edges.map((p) => p.node), [data.allContentfulProjet.edges]);
   return (
@@ -41,8 +42,11 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           previewImage {
             title
-            fluid(maxWidth: 280, maxHeight: 260, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_withWebp_noBase64
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+            svg {
+              content
             }
           }
           fields {

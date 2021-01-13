@@ -46,10 +46,13 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
     navigate(`/projets/${nextProject}`);
   }, [nextProject]);
 
-  const imagesSource = React.useMemo(() => [hero.fluid.src, ...projet.images.map(({ fluid }) => fluid.src)], [
-    projet.images,
-    hero,
-  ]);
+  const imagesSource = React.useMemo(
+    () => [
+      hero.fluid ? hero.fluid.src : (hero.svg?.content as string),
+      ...projet.images.map(({ fluid, svg }) => (fluid ? fluid.src : ((svg as any).content as string))),
+    ],
+    [projet.images, hero],
+  );
 
   return (
     <Wrapper>
@@ -78,13 +81,15 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
       <Images>
         <ProjectHero>
           <ImageButton onClick={openLightboxOnSlide.bind(this, 0)}>
-            <Img alt={hero.title} fluid={hero.fluid} />
+            {hero.fluid && <Img alt={hero.title} fluid={hero.fluid} />}
+            {hero.svg && <div dangerouslySetInnerHTML={{ __html: hero.svg.content }} />}
           </ImageButton>
         </ProjectHero>
         <SmallImageList>
-          {projet.images.map(({ title, preview }, index) => (
-            <ImageButton onClick={openLightboxOnSlide.bind(this, index)}>
-              <Img alt={title} fluid={preview} />
+          {projet.images.map(({ title, preview, svg }, index) => (
+            <ImageButton key={index} onClick={openLightboxOnSlide.bind(this, index)}>
+              {preview && <Img alt={title} fluid={preview} />}
+              {svg && <div dangerouslySetInnerHTML={{ __html: svg.content }} />}
             </ImageButton>
           ))}
         </SmallImageList>

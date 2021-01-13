@@ -41,6 +41,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sitemap',
     'gatsby-transformer-remark',
+    `gatsby-transformer-inline-svg`,
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
@@ -93,6 +94,7 @@ module.exports = {
         description: `Noun Graphisme Portfolio: Tous à propos de mes réalisations graphiques.`,
         theme_color: `#FFF`,
         display: `standalone`,
+        icon: 'src/images/icon-512x512.png',
         icons: [
           {
             src: 'src/images/icon-48x48.png',

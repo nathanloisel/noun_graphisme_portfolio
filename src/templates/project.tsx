@@ -16,12 +16,14 @@ export interface IProject {
   client?: string;
   images: Array<{
     title: string;
-    fluid: FluidObject;
-    preview: FluidObject;
+    fluid?: FluidObject;
+    svg?: { content: string };
+    preview?: FluidObject;
   }>;
   heroImage: {
     title: string;
-    fluid: FluidObject;
+    fluid?: FluidObject;
+    svg?: { content: string };
   };
 }
 
@@ -40,14 +42,11 @@ interface IProjectTemplateProps {
 const ProjetTemplate: React.FC<IProjectTemplateProps> = ({ data, pageContext }) => {
   const projet = data.contentfulProjet;
   const nextProject = pageContext.next;
+  const image = projet.heroImage.fluid ? projet.heroImage.fluid.src : projet.heroImage.svg?.content;
   return (
     <Layout>
       <>
-        <SEO
-          title={projet.title}
-          description={`${projet.title} - ${projet.sousTitre} - ${projet.description}`}
-          image={projet.heroImage.fluid.src}
-        />
+        <SEO title={projet.title} description={`${projet.title} - ${projet.sousTitre} - ${projet.description}`} image={image} />
         <Projet projet={projet} nextProject={nextProject} />
       </>
     </Layout>
@@ -71,6 +70,9 @@ export const query = graphql`
         fluid(maxWidth: 827, maxHeight: 410, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
+        svg {
+          content
+        }
       }
       images {
         title
@@ -79,6 +81,9 @@ export const query = graphql`
         }
         preview: fluid(maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+        svg {
+          content
         }
       }
     }

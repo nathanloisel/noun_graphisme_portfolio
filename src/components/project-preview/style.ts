@@ -7,7 +7,6 @@ export const StyledLink = styled(Link)`
   display: block;
   width: 280px;
   height: 260px;
-  background-color: #c4c4c4;
 
   & > .project-preview-inner {
     opacity: 0;

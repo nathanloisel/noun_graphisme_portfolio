@@ -7,7 +7,10 @@ export interface IProjectPreviewProps {
   title: string;
   image: {
     title: string;
-    fluid: FluidObject;
+    fluid?: FluidObject;
+    svg?: {
+      content: string;
+    };
   };
   className?: string;
 }
@@ -15,7 +18,8 @@ export interface IProjectPreviewProps {
 const ProjectPreview: React.FC<IProjectPreviewProps> = ({ slug, title, image, className }) => {
   return (
     <StyledLink to={`/projets/${slug}`} className={className}>
-      <Img alt={image.title} fluid={image.fluid} />
+      {image.fluid && <Img alt={image.title} fluid={image.fluid} />}
+      {image.svg && <div dangerouslySetInnerHTML={{ __html: image.svg.content }} />}
       <div className="project-preview-inner">
         <Plus>+</Plus>
         <Title>{title}</Title>

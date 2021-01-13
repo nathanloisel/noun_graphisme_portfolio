@@ -31,8 +31,9 @@ export const StyledRichText = styled(RichText)`
   p {
     ${({ theme }) =>
       theme.breakpoints.under_m(`
-    text-align: center;
-  `)}
+        text-align: center;
+    `)}
+    text-align: justify;
   }
   > * {
     color: ${({ theme }) => theme.color.grey.hex};

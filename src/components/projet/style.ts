@@ -81,7 +81,7 @@ export const SmallImageList = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   button {
-    width: 150px;
+    width: 250px;
     margin-top: 50px;
     ${({ theme }) =>
       theme.breakpoints.under_m(`
