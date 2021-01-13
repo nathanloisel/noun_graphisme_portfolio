@@ -42,7 +42,7 @@ export const pageQuery = graphql`
           publishDate(formatString: "MMMM Do, YYYY")
           previewImage {
             title
-            fluid {
+            fluid(quality: 80, maxWidth: 280, maxHeight: 260, resizingBehavior: SCALE) {
               ...GatsbyContentfulFluid
             }
             svg {
