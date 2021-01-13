@@ -46,13 +46,12 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
     navigate(`/projets/${nextProject}`);
   }, [nextProject]);
 
-  const imagesSource = React.useMemo(
-    () => [
-      hero.fluid ? hero.fluid.src : (hero.svg?.content as string),
-      ...projet.images.map(({ fluid, svg }) => (fluid ? fluid.src : ((svg as any).content as string))),
-    ],
-    [projet.images, hero],
-  );
+  const imagesSource = React.useMemo(() => {
+    let res = [hero.fluid ? hero.fluid.src : (hero.svg?.content as string)];
+    if (projet.images)
+      res = [...res, ...projet.images.map(({ fluid, svg }) => (fluid ? fluid.src : ((svg as any).content as string)))];
+    return res;
+  }, [projet.images, hero]);
 
   return (
     <Wrapper>
@@ -85,14 +84,16 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
             {hero.svg && <div dangerouslySetInnerHTML={{ __html: hero.svg.content }} />}
           </ImageButton>
         </ProjectHero>
-        <SmallImageList>
-          {projet.images.map(({ title, preview, svg }, index) => (
-            <ImageButton key={index} onClick={openLightboxOnSlide.bind(this, index)}>
-              {preview && <Img alt={title} fluid={preview} />}
-              {svg && <div dangerouslySetInnerHTML={{ __html: svg.content }} />}
-            </ImageButton>
-          ))}
-        </SmallImageList>
+        {projet.images && (
+          <SmallImageList>
+            {projet.images.map(({ title, preview, svg }, index) => (
+              <ImageButton key={index} onClick={openLightboxOnSlide.bind(this, index)}>
+                {preview && <Img alt={title} fluid={preview} />}
+                {svg && <div dangerouslySetInnerHTML={{ __html: svg.content }} />}
+              </ImageButton>
+            ))}
+          </SmallImageList>
+        )}
         <FsLightbox toggler={lightboxController.toggler} sources={imagesSource} sourceIndex={lightboxController.slide} />
       </Images>
       {nextProject && (

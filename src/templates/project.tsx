@@ -14,7 +14,7 @@ export interface IProject {
   description: IRichText;
   publishDate: string;
   client?: string;
-  images: Array<{
+  images?: Array<{
     title: string;
     fluid?: FluidObject;
     svg?: { content: string };
