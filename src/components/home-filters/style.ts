@@ -30,6 +30,7 @@ export const StyledLink = styled(Link)`
   font-size: ${({ theme }) => theme.typo.xl};
   font-weight: bold;
   color: ${({ theme }) => theme.color.dark_grey.hex};
+  line-height: 35px;
 `;
 
 export const Wrapper = styled.div``;

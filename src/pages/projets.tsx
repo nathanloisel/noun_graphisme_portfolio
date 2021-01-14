@@ -18,7 +18,6 @@ interface IProjetsProps {
 }
 
 const Projets: React.FC<IProjetsProps> = ({ data }) => {
-  console.log(data.allContentfulProjet.edges[2].node.previewImage);
   const [meta] = data.allContentfulBioImageContact.edges;
   const projects = React.useMemo(() => data.allContentfulProjet.edges.map((p) => p.node), [data.allContentfulProjet.edges]);
   return (

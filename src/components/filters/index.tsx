@@ -14,6 +14,7 @@ export const FilterLabel = {
   [ProjectFilters.Identite]: 'Identité visuelle',
   [ProjectFilters.WebDesign]: 'Webdesign',
   [ProjectFilters.MotionDesign]: 'Motion Design',
+  [ProjectFilters.Infographie]: 'Infographie',
 };
 
 const Filters: React.FC<IFiltersProps> = ({ filter, onChange, className }) => {
@@ -32,7 +33,12 @@ const Filters: React.FC<IFiltersProps> = ({ filter, onChange, className }) => {
         Tous les projets
       </Filter>
       {Object.keys(ProjectFilters).map((a: any) => (
-        <Filter key={a} onClick={onClick} isSelected={(a as ProjectFilters) === thisFilter} data-filter={a as ProjectFilters}>
+        <Filter
+          key={a}
+          onClick={onClick}
+          isSelected={((ProjectFilters as any)[a] as ProjectFilters) === thisFilter}
+          data-filter={(ProjectFilters as any)[a] as ProjectFilters}
+        >
           {(FilterLabel as any)[(ProjectFilters as any)[a]]}
         </Filter>
       ))}

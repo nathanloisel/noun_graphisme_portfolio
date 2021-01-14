@@ -7,25 +7,34 @@ import { IRichText, ProjectFilters } from '../pages';
 import Projet from '../components/projet';
 import SEO from '../components/seo';
 
+export interface IGatsbyFile {
+  contentType: 'image/svg+xml' | 'image/png' | 'image/jpeg' | 'video/mp4';
+  details: {
+    size: number;
+  };
+  fileName: string;
+  url: string;
+}
+export interface IGatsbyContentfulImage {
+  title: string;
+  file: IGatsbyFile;
+  fluid?: FluidObject;
+  preview?: FluidObject;
+  svg?: {
+    content: string;
+  };
+}
+
 export interface IProject {
   title: string;
   sousTitre: string;
   category: ProjectFilters;
   description: IRichText;
   publishDate: string;
+  isVerticalHeroImage?: boolean;
   client?: string;
-  images?: Array<{
-    title: string;
-    fluid?: FluidObject;
-    svg?: { content: string };
-    preview?: FluidObject;
-  }>;
-  heroImage: {
-    title: string;
-    fluid?: FluidObject;
-    svg?: { content: string };
-    preview?: FluidObject;
-  };
+  images?: Array<IGatsbyContentfulImage>;
+  heroImage: IGatsbyContentfulImage;
 }
 
 interface IProjectTemplateProps {
@@ -76,6 +85,14 @@ export const query = graphql`
         }
         svg {
           content
+        }
+        file {
+          url
+          details {
+            size
+          }
+          fileName
+          contentType
         }
       }
       images {

@@ -15,9 +15,10 @@ import {
   SmallImageList,
   StyledDots,
   NextProjectButton,
-  ProjectHero,
+  ProjectHeroWrapper,
 } from './style';
 import FsLightbox from 'fslightbox-react';
+import ProjectHero from '../project-hero';
 
 export interface IProjetProps {
   projet: IProject;
@@ -47,12 +48,11 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
   }, [nextProject]);
 
   const imagesSource = React.useMemo(() => {
-    let res = [hero.fluid ? hero.fluid.src : (hero.svg?.content as string)];
+    let res = [hero.fluid ? hero.fluid.src : hero.svg ? hero.svg.content : hero.file.url];
     if (projet.images)
       res = [...res, ...projet.images.map(({ fluid, svg }) => (fluid ? fluid.src : ((svg as any).content as string)))];
     return res;
   }, [projet.images, hero]);
-
   return (
     <Wrapper>
       <Details>
@@ -78,12 +78,11 @@ const Projet: React.FC<IProjetProps> = ({ projet, nextProject }) => {
         )}
       </Details>
       <Images>
-        <ProjectHero>
-          <ImageButton onClick={openLightboxOnSlide.bind(this, 0)}>
-            {hero.preview && <Img alt={hero.title} fluid={hero.preview} />}
-            {hero.svg && <div dangerouslySetInnerHTML={{ __html: hero.svg.content }} />}
+        <ProjectHeroWrapper>
+          <ImageButton onClick={openLightboxOnSlide.bind(this, 0)} isVerticalHeroImage={projet.isVerticalHeroImage}>
+            <ProjectHero image={projet.heroImage} />
           </ImageButton>
-        </ProjectHero>
+        </ProjectHeroWrapper>
         {projet.images && (
           <SmallImageList>
             {projet.images.map(({ title, preview, svg }, index) => (

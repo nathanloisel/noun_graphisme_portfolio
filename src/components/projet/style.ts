@@ -89,13 +89,13 @@ export const SmallImageList = styled.div`
     `)}
   }
 `;
-export const ImageButton = styled.button`
+export const ImageButton = styled.button<{ isVerticalHeroImage?: boolean }>`
   display: block;
   width: 100%;
   border: none;
   cursor: pointer;
 `;
-export const ProjectHero = styled.div`
+export const ProjectHeroWrapper = styled.div`
   ${({ theme }) =>
     theme.breakpoints.under_m(`
       margin-top: 20px;

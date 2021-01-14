@@ -18,6 +18,7 @@ export enum ProjectFilters {
   Edition = 'edition',
   WebDesign = 'webdesign',
   MotionDesign = 'motiondesign',
+  Infographie = 'infographie',
 }
 
 export interface ISiteMetaData {
