@@ -8,11 +8,14 @@ export interface IProjectHeroProps {
 }
 
 const ProjectHero: React.FC<IProjectHeroProps> = ({ image }) => {
+  const prevent = React.useCallback((e: React.MouseEvent<HTMLVideoElement>) => {
+    e.stopPropagation();
+  }, []);
   if (image.preview) return <Img alt={image.title} fluid={image.preview} />;
   if (image.svg) return <div dangerouslySetInnerHTML={{ __html: image.svg.content }} />;
   if (image.file.contentType === 'video/mp4')
     return (
-      <video preload="metadata" controls playsInline>
+      <video preload="metadata" controls playsInline onClick={prevent}>
         <source src={image.file.url} type={image.file.contentType} />
         your browser does not support the video tag.
       </video>
