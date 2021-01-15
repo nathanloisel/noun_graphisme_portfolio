@@ -40,6 +40,7 @@ module.exports = {
   pathPrefix: '/',
   plugins: [
     'gatsby-plugin-sitemap',
+    `gatsby-plugin-netlify`,
     'gatsby-transformer-remark',
     `gatsby-transformer-inline-svg`,
     'gatsby-transformer-sharp',
