@@ -42,7 +42,7 @@ export const pageQuery = graphql`
           previewImage {
             title
             fluid(quality: 80, maxWidth: 280, maxHeight: 260, resizingBehavior: FILL) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
             svg {
               content

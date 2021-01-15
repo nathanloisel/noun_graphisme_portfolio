@@ -81,7 +81,7 @@ export const query = graphql`
           ...GatsbyContentfulFluid_withWebp_noBase64
         }
         fluid(quality: 100, maxWidth: 2000) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
         svg {
           content
@@ -98,7 +98,7 @@ export const query = graphql`
       images {
         title
         fluid(quality: 100, maxWidth: 2000) {
-          ...GatsbyContentfulFluid
+          ...GatsbyContentfulFluid_withWebp_noBase64
         }
         preview: fluid(quality: 80, maxWidth: 250, maxHeight: 200, resizingBehavior: SCALE) {
           ...GatsbyContentfulFluid_withWebp_noBase64
