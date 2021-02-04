@@ -5,14 +5,19 @@ import Layout from '../components/layout';
 import styled from 'styled-components';
 import RichText from '../components/rich-text';
 import SEO from '../components/seo';
-import mapboxgl from 'mapbox-gl';
-mapboxgl.accessToken = 'pk.eyJ1IjoibG91ZHVwb250IiwiYSI6ImNranUxczZxOTFkYmYycXFocnVzaGx4NDUifQ.IW2_v2koXet8ZhQyKmSqUg';
+// @ts-ignore
+import Img, { FluidObject } from 'gatsby-image';
 
 interface IContactProps {
   data: {
     allContentfulBioImageContact: {
       edges: Array<{ node: IBioImageContact }>;
     };
+    map: {
+      childImageSharp: {
+        fluid: FluidObject;
+      };
+    } | null;
   };
   location: Location;
 }
@@ -24,11 +29,7 @@ const Title = styled.h1`
 `;
 const MapContainer = styled.div`
   width: 100%;
-  height: 500px;
   margin-top: 75px;
-  .mapboxgl-ctrl-bottom-right {
-    display: none;
-  }
 `;
 const StyledRichText = styled(RichText)`
   p {
@@ -58,37 +59,13 @@ const Details = styled.div`
 
 const Contact: React.FC<IContactProps> = ({ data }) => {
   const [meta] = data.allContentfulBioImageContact.edges;
-  const mapContainerRef = React.useRef<HTMLDivElement>(null);
-  // initialize map when component mounts
-  React.useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current as HTMLElement,
-      // See style options here: https://docs.mapbox.com/api/maps/#styles
-      // 8.16/46.082/5.714
-      style: 'mapbox://styles/loudupont/ckju1uyrs0wgw19o2k3zlgl5k',
-      center: [5.714, 46.082],
-      zoom: 8.16,
-      minZoom: 8.16,
-      dragPan: false,
-      scrollZoom: false,
-      boxZoom: false,
-      touchZoomRotate: false,
-      dragRotate: false,
-    });
-
-    // add navigation control (the +/- zoom buttons)
-    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-
-    // clean up on unmount
-    return () => map.remove();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  console.log(data.map);
   return (
     <Layout facebookUrl={meta.node.facebook} behanceUrl={meta.node.behance}>
       <SEO title={'Contact'} />
       <main>
         <Title>Un projet ? Besoin d’un devis ? Contactez-moi</Title>
-        <MapContainer ref={mapContainerRef} />
+        <MapContainer>{data.map && <Img fluid={data.map.childImageSharp.fluid} />}</MapContainer>
         <Details itemScope itemType="https://schema.org/Business">
           <h3>
             <a href={`mailto:${meta.node.email}?subject=Demande de devis`} itemProp="email">
@@ -111,6 +88,13 @@ export default Contact;
 
 export const pageQuery = graphql`
   query ContactQuery {
+    map: file(relativePath: { eq: "carte-chablais.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_noBase64
+        }
+      }
+    }
     allContentfulBioImageContact(filter: { contentful_id: { eq: "2nH2prijQalfGjAOnIQfbt" } }) {
       edges {
         node {

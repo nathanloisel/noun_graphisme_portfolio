@@ -40,10 +40,11 @@ module.exports = {
   pathPrefix: '/',
   plugins: [
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     `gatsby-plugin-netlify`,
     'gatsby-transformer-remark',
     `gatsby-transformer-inline-svg`,
-    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
@@ -51,6 +52,13 @@ module.exports = {
       options: {
         name: `fonts`,
         path: `${__dirname}/src/fonts/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images/`,
       },
     },
     {
@@ -72,7 +80,6 @@ module.exports = {
         respectDNT: true,
       },
     },
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
