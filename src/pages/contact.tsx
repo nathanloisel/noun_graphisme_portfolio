@@ -90,8 +90,9 @@ export const pageQuery = graphql`
   query ContactQuery {
     map: file(relativePath: { eq: "carte-chablais.png" }) {
       childImageSharp {
-        fluid(maxWidth: 2000, quality: 100) {
+        fluid(maxWidth: 1500, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_noBase64
+          ...GatsbyImageSharpFluidLimitPresentationSize
         }
       }
     }
